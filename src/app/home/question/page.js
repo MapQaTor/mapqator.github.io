@@ -21,7 +21,7 @@ import ContextGeneratorService from "@/services/contextGeneratorService";
 import { useAuth } from "@/contexts/AuthContext";
 import { AppContext } from "@/contexts/AppContext";
 import { useRouter, useSearchParams } from "next/navigation";
-import QuestionAnswerForm from "@/components/Forms/QuestionAnswerForm";
+import QuestionAnswerForm from "@/components/Forms/SingleQuestionAnswerForm";
 import {
 	ArrowBack,
 	ArrowForward,
@@ -120,7 +120,7 @@ export default function QuestionCreationPage() {
 		>
 			<Box sx={{ my: 4 }} className="flex flex-col gap-6">
 				<h1 className="text-3xl md:text-4xl font-normal pb-2">
-					Create QA Pairs based on the Context
+					Create QA Pair based on the Context
 				</h1>
 				<Paper elevation={2} sx={{ p: 3 }}>
 					<Box

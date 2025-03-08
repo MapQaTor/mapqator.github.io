@@ -317,8 +317,18 @@ export default function GlobalContextProvider({ children }) {
 		references: [],
 	};
 
+	// const [query, setQuery] = useState({
+	// 	questions: [initQuery],
+	// });
+
 	const [query, setQuery] = useState({
-		questions: [initQuery],
+		question: "",
+		answer: {
+			type: "single-choice",
+			options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+			correct: -1,
+		},
+		classification: "",
 	});
 
 	const [savedPlacesMap, setSavedPlacesMap] = useState({});
