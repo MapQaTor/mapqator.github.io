@@ -636,7 +636,10 @@ export default function ContextEditor({
 			icon: <RemoveRedEye />,
 			component: (
 				<>
-					<Paper elevation={1} sx={{ p: 2, bgcolor: "grey.100" }}>
+					<Paper
+						elevation={1}
+						sx={{ p: 2, bgcolor: "grey.100", minHeight: "5rem" }}
+					>
 						<Box className="mt-2">
 							{ContextGeneratorService.summarizeContext(
 								savedPlacesMap,

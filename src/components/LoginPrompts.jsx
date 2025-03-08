@@ -1,10 +1,11 @@
 // components/LoginPrompt.jsx
 import React, { useContext } from "react";
-import { Button, Typography, Box } from "@mui/material";
+import { Button, Typography, Box, Modal } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
-import { Download } from "@mui/icons-material";
+import { Download, Settings } from "@mui/icons-material";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import { AppContext } from "@/contexts/AppContext";
+import PromptDesigner from "./PromptDesigner";
 
 const LoginPrompt = ({ onLogin }) => {
 	const {
@@ -16,6 +17,13 @@ const LoginPrompt = ({ onLogin }) => {
 		routePlacesMap,
 		savedPlacesMap,
 	} = useContext(GlobalContext);
+
+	const [open, setOpen] = React.useState(false);
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+	const handleClose = () => setOpen(false);
 
 	const handleDownload = () => {
 		const jsonString = JSON.stringify(
@@ -51,6 +59,15 @@ const LoginPrompt = ({ onLogin }) => {
 
 	return (
 		<Box className="p-4 bg-gray-100 rounded-lg text-center w-full flex flex-col items-center gap-2">
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<PromptDesigner query={query} onClose={handleClose} />
+			</Modal>
+
 			<LockIcon className="text-gray-500" fontSize="large" />
 			<Box>
 				<Typography variant="h6" gutterBottom>
@@ -78,6 +95,15 @@ const LoginPrompt = ({ onLogin }) => {
 				className="mt-2 w-[12rem]"
 			>
 				Download JSON
+			</Button>
+			<Button
+				variant="outlined"
+				color="secondary"
+				onClick={handleOpen}
+				startIcon={<Settings />}
+				className="mt-2 w-[12rem]"
+			>
+				Prompt Design
 			</Button>
 		</Box>
 	);
