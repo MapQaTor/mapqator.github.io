@@ -64,10 +64,14 @@ export default function PoiList({
 										? "|🚶🏾‍➡️" +
 										  routingSummaries[index].legs[0]
 												.duration +
-										  " (" +
-										  routingSummaries[index].legs[0]
-												.distanceMeters +
-										  "m)"
+										  (routingSummaries[index].legs[0]
+												.distanceMeters
+												? " (" +
+												  routingSummaries[index]
+														.legs[0]
+														.distanceMeters +
+												  "m)"
+												: "")
 										: ""
 								}`}
 								primaryTypographyProps={{ noWrap: true }}

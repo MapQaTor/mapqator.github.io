@@ -27,6 +27,7 @@ import {
 	Rule,
 	AssignmentTurnedIn,
 	Api,
+	CopyAll,
 } from "@mui/icons-material";
 import { useAuth } from "@/contexts/AuthContext";
 import { showError, showSuccess } from "@/contexts/ToastProvider";
@@ -69,6 +70,17 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 		link.click();
 		document.body.removeChild(link);
 		URL.revokeObjectURL(href);
+	};
+
+	const copyContext = () => {
+		const textualContext = ContextGeneratorService.convertContextToText(
+			entry.context_json.places,
+			entry.context_json.place_details,
+			entry.context_json.nearby_places,
+			entry.context_json.directions,
+			entry.context_json.route_places
+		);
+		alert(textualContext);
 	};
 
 	return (
@@ -255,30 +267,14 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 					</Box>
 
 					<div className="flex flex-col gap-4">
-						{/* {entry.questions.map((question, i) => (
-							<div key={i}>
-								<Typography variant="h6" gutterBottom>
-									Question {i + 1}:
-								</Typography>
-								<Paper
-									elevation={1}
-									sx={{ p: 2, bgcolor: "grey.100" }}
-								>
-									<Box sx={{ mb: 2 }}>
-										<h6
-											className={`${"whitespace-pre-line"}`}
-										>
-											{question.title}
-										</h6>
-									</Box>
-									<OptionsPreview answer={question.answer} />
-									<LLMAnswers entry={entry} index={i} />
-								</Paper>
-							</div>
-						))} */}
-						<Paper elevation={1} sx={{ p: 2, bgcolor: "grey.100" }}>
-							<OptionsPreview answer={entry.answer} />
-						</Paper>
+						{entry.answer && (
+							<Paper
+								elevation={1}
+								sx={{ p: 2, bgcolor: "grey.100" }}
+							>
+								<OptionsPreview answer={entry.answer} />
+							</Paper>
+						)}
 					</div>
 
 					{/* <OptionsPreview answer={entry.answer} /> */}
@@ -371,7 +367,15 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 								>
 									Download
 								</Button>
-
+								<Button
+									// variant="outlined"
+									color="secondary"
+									onClick={copyContext}
+									startIcon={<CopyAll />}
+									// className="mt-2"
+								>
+									Copy
+								</Button>
 								<Button
 									// variant="contained"
 									color="error"

@@ -2,6 +2,7 @@ import Pluralize from "pluralize";
 import { convertFromSnake } from "./utils";
 import textualFields from "@/database/textualFields.json";
 import { template } from "@/database/templates.js";
+import { list as placeDetailsTools } from "@/tools/PlaceDetails";
 
 const priceMap = {
 	PRICE_LEVEL_INEXPENSIVE: "Inexpensive",
@@ -121,79 +122,48 @@ const placeToContext = (place_id, selectedPlacesMap, savedPlacesMap) => {
 
 	return text;
 };
+
 const ContextGeneratorService = {
 	getPlacesContext: (selectedPlacesMap, savedPlacesMap) => {
 		let newContext = "";
 		for (const place_id of Object.keys(selectedPlacesMap)) {
-			const text = placeToContext(
-				place_id,
-				selectedPlacesMap,
-				savedPlacesMap
-			);
+			const attributes =
+				placeDetailsTools[
+					selectedPlacesMap[place_id].mapService
+				][0].instance.getFields();
+
+			let text = attributes
+				.map((attribute) => {
+					const attributeName = convertFromSnake(attribute);
+					const attributeValue = template[attribute]
+						? template[attribute](
+								selectedPlacesMap[place_id][attribute] ||
+									savedPlacesMap[place_id][attribute]
+						  )
+						: "N/A";
+					return `${attributeName}: ${attributeValue}`;
+				})
+				.join("\n");
 			if (text !== "") {
 				if (newContext.length > 0) {
 					newContext += "\n";
 				}
 				newContext +=
-					`Information of <b>${savedPlacesMap[place_id]?.displayName?.text}</b>:\n` +
-					text;
+					`Information of ${savedPlacesMap[place_id]?.displayName?.text}:\n` +
+					text +
+					"\n";
 			}
 		}
-		return newContext;
-	},
-	getParamsContext: (currentInformation, savedPlacesMap) => {
-		let newContext = "";
-		if (currentInformation.time && currentInformation.day !== "") {
-			newContext += `Current time is ${currentInformation.time.format(
-				"h:mm a"
-			)} on ${currentInformation.day}.\n`;
-		} else if (currentInformation.time) {
-			newContext += `Current time is ${currentInformation.time.format(
-				"h:mm a"
-			)}.\n`;
-		} else if (currentInformation.day !== "") {
-			newContext += `Current day is ${currentInformation.day}.\n`;
-		}
-		if (currentInformation.location !== "") {
-			newContext += `Current location of user is <b>${
-				savedPlacesMap[currentInformation.location]?.name
-			}</b>.\n`;
-		}
-		return newContext;
-	},
-	getAreaContext: (poisMap, savedPlacesMap) => {
-		let newContext = "";
-		Object.keys(poisMap).forEach((place_id, index) => {
-			poisMap[place_id].forEach((poi) => {
-				if (newContext.length > 0) {
-					newContext += "\n";
-				}
-				newContext += `Places in ${savedPlacesMap[place_id]?.name} of type \"${poi.type}\" are:\n`;
-				let counter = 1;
-				poi.places.forEach((place) => {
-					if (place.selected) {
-						newContext += `${counter}. <b>${
-							savedPlacesMap[place.place_id]?.name || place.name
-						}</b> (${
-							place.formatted_address ||
-							savedPlacesMap[place.place_id]?.vicinity
-						})\n`;
-						counter++;
-					}
-				});
-			});
-		});
 		return newContext;
 	},
 	getNearbyContext: (nearbyPlacesMap, savedPlacesMap) => {
 		let newContext = "";
-		return newContext;
+
 		nearbyPlacesMap.forEach((e, index) => {
-			if (newContext.length > 0) {
-				newContext += "\n";
-			}
-			newContext += `Nearby ${Pluralize(convertFromSnake(e.type))} of ${
-				// selectedPlacesMap[place_id].alias ||
+			// if (newContext.length > 0) {
+			// 	newContext += "\n";
+			// }
+			newContext += `\nNearby ${Pluralize(convertFromSnake(e.type))} of ${
 				savedPlacesMap[e.locationBias]?.displayName?.text
 			}${
 				e.minRating > 0
@@ -208,56 +178,68 @@ const ContextGeneratorService = {
 			} are:${
 				e.rankPreference === "DISTANCE" ? " (Rank by Distance)" : ""
 			}\n`;
-			let counter = 1;
-			e.places.forEach((near_place) => {
-				if (near_place.selected) {
-					newContext += `${counter}. <b>${
-						near_place.displayName?.text
-					}</b> (${
-						"Rating: " +
-						near_place.rating +
-						(near_place.priceLevel
-							? " | " +
-							  template["priceLevel"](near_place.priceLevel)
-							: "")
-					})\n`;
-					counter++;
-				}
+
+			e.places.forEach((place, index) => {
+				newContext += `${index + 1}. ${place.displayName?.text} | ${
+					place.rating
+						? "Rating: " +
+						  place.rating +
+						  "*" +
+						  " (" +
+						  place.userRatingCount +
+						  ")"
+						: "Address:" + place.shortFormattedAddress
+				} ${
+					place.priceLevel
+						? `| ${template["priceLevel"](place.priceLevel)}`
+						: ""
+				} ${
+					e.routingSummaries && e.routingSummaries[index]?.legs[0]
+						? "|🚶🏾‍➡️" +
+						  e.routingSummaries[index].legs[0].duration +
+						  (e.routingSummaries[index].legs[0].distanceMeters
+								? " (" +
+								  e.routingSummaries[index].legs[0]
+										.distanceMeters +
+								  "m)"
+								: "")
+						: ""
+				}\n`;
 			});
 		});
 		return newContext;
 	},
-	getDistanceContext: (distanceMatrix, savedPlacesMap) => {
-		let newContext = "";
-		Object.keys(distanceMatrix).forEach((from_id) => {
-			Object.keys(distanceMatrix[from_id]).forEach((to_id) => {
-				if (newContext.length > 0) {
-					newContext += "\n";
-				}
-				newContext += `Travel time from <b>${
-					// selectedPlacesMap[from_id].alias ||
-					savedPlacesMap[from_id]?.displayName?.text
-				}</b> to <b>${
-					// selectedPlacesMap[to_id].alias ||
-					savedPlacesMap[to_id]?.displayName?.text
-				}</b> is:\n`;
-				Object.keys(distanceMatrix[from_id][to_id]).forEach((mode) => {
-					newContext += `- ${
-						mode.toLowerCase() === "transit"
-							? "By public transport"
-							: mode.toLowerCase() === "walk"
-							? "On foot"
-							: mode.toLowerCase() === "drive"
-							? "By car"
-							: "By cycle"
-					}: ${distanceMatrix[from_id][to_id][mode].duration} (${
-						distanceMatrix[from_id][to_id][mode].distance
-					}).\n`;
-				});
-			});
-		});
-		return newContext;
-	},
+	// getDistanceContext: (distanceMatrix, savedPlacesMap) => {
+	// 	let newContext = "";
+	// 	Object.keys(distanceMatrix).forEach((from_id) => {
+	// 		Object.keys(distanceMatrix[from_id]).forEach((to_id) => {
+	// 			if (newContext.length > 0) {
+	// 				newContext += "\n";
+	// 			}
+	// 			newContext += `Travel time from <b>${
+	// 				// selectedPlacesMap[from_id].alias ||
+	// 				savedPlacesMap[from_id]?.displayName?.text
+	// 			}</b> to <b>${
+	// 				// selectedPlacesMap[to_id].alias ||
+	// 				savedPlacesMap[to_id]?.displayName?.text
+	// 			}</b> is:\n`;
+	// 			Object.keys(distanceMatrix[from_id][to_id]).forEach((mode) => {
+	// 				newContext += `- ${
+	// 					mode.toLowerCase() === "transit"
+	// 						? "By public transport"
+	// 						: mode.toLowerCase() === "walk"
+	// 						? "On foot"
+	// 						: mode.toLowerCase() === "drive"
+	// 						? "By car"
+	// 						: "By cycle"
+	// 				}: ${distanceMatrix[from_id][to_id][mode].duration} (${
+	// 					distanceMatrix[from_id][to_id][mode].distance
+	// 				}).\n`;
+	// 			});
+	// 		});
+	// 	});
+	// 	return newContext;
+	// },
 	getDirectionContext: (directionInformation, savedPlacesMap) => {
 		let newContext = "";
 
@@ -531,8 +513,25 @@ const ContextGeneratorService = {
 		});
 		return newContext;
 	},
-	convertContextToText: (context) => {
+	convertContextToText: (
+		savedPlacesMap,
+		selectedPlacesMap,
+		nearbyPlacesMap,
+		directionInformation,
+		routePlacesMap
+	) => {
 		let text = "";
+
+		text += ContextGeneratorService.getPlacesContext(
+			selectedPlacesMap,
+			savedPlacesMap
+		);
+
+		text += ContextGeneratorService.getNearbyContext(
+			nearbyPlacesMap,
+			savedPlacesMap
+		);
+
 		// text += context.places !== "" ? context.places : "";
 		// text +=
 		// 	context.nearby !== ""
