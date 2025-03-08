@@ -13,7 +13,7 @@ import {
 import { CheckCircle } from "@mui/icons-material";
 
 const SingleAnswer = ({ answer }) => (
-	<Box sx={{ mb: 2 }}>
+	<Box>
 		<Typography variant="h6" gutterBottom>
 			Options:
 		</Typography>
@@ -40,7 +40,7 @@ const SingleAnswer = ({ answer }) => (
 );
 
 const MultipleAnswer = ({ answer }) => (
-	<Box sx={{ mb: 2 }}>
+	<Box>
 		<Typography variant="h6" gutterBottom>
 			Options:
 		</Typography>
@@ -67,7 +67,7 @@ const MultipleAnswer = ({ answer }) => (
 );
 
 const ShortAnswer = ({ answer }) => (
-	<Box sx={{ mb: 2 }}>
+	<Box>
 		<Typography variant="h6" gutterBottom>
 			Correct Answer:
 		</Typography>
@@ -80,7 +80,7 @@ const ShortAnswer = ({ answer }) => (
 );
 
 const YesNoAnswer = ({ answer }) => (
-	<Box sx={{ mb: 2 }}>
+	<Box>
 		<Typography variant="h6" gutterBottom>
 			Correct Answer: <b>{answer.correct ? "Yes" : "No"}</b>
 		</Typography>

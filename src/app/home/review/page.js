@@ -160,7 +160,13 @@ export default function Summary() {
 		const newQuery = {
 			...query,
 			name: queryName,
-			// context: ContextGeneratorService.convertContextToText(context),
+			context: ContextGeneratorService.convertContextToText(
+				savedPlacesMap,
+				selectedPlacesMap,
+				nearbyPlacesMap,
+				directionInformation,
+				routePlacesMap
+			),
 			context_json: {
 				places: savedPlacesMap,
 				// distance_matrix: distanceMatrix,
@@ -236,6 +242,29 @@ export default function Summary() {
 		}
 	};
 
+	useEffect(() => {
+		// Update "context" in the query object
+		const contextText = ContextGeneratorService.convertContextToText(
+			savedPlacesMap,
+			selectedPlacesMap,
+			nearbyPlacesMap,
+			directionInformation,
+			routePlacesMap
+		);
+
+		setQuery((prev) => ({
+			...prev,
+			context: contextText,
+			context_json: {
+				places: savedPlacesMap,
+				place_details: selectedPlacesMap,
+				nearby_places: nearbyPlacesMap,
+				directions: directionInformation,
+				route_places: routePlacesMap,
+			},
+		}));
+	}, []);
+
 	const {
 		initRoutePlacesMap,
 		initSelectedPlacesMap,
@@ -260,9 +289,7 @@ export default function Summary() {
 		setRoutePlacesMap(initRoutePlacesMap);
 		setSelectedPlacesMap(initSelectedPlacesMap);
 		setSavedPlacesMap({});
-		setQuery({
-			questions: [initQuery],
-		});
+		setQuery(initQuery);
 		setActiveStep(1);
 		setContext([]);
 	};
@@ -437,7 +464,10 @@ export default function Summary() {
 											{query.question}
 										</h6>
 									</Box>
-									<OptionsPreview answer={query.answer} />
+									{query.answer && (
+										<OptionsPreview answer={query.answer} />
+									)}
+
 									{/* <LLMAnswers entry={entry} index={i} /> */}
 								</Paper>
 							</div>

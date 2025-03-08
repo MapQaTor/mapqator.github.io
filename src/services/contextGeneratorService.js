@@ -257,12 +257,12 @@ const ContextGeneratorService = {
 		let newContext = "";
 
 		directionInformation.forEach((direction) => {
-			if (newContext.length > 0) {
-				newContext += "\n";
-			}
+			// if (newContext.length > 0) {
+			// 	newContext += "\n";
+			// }
 			if (direction.intermediates.length > 0) {
 				if (direction.optimizeWaypointOrder) {
-					newContext += `If we want to start our journey from <b>${
+					newContext += `\nIf we want to start our journey from <b>${
 						savedPlacesMap[direction.origin]?.displayName?.text
 					}</b>, then visit ${direction.intermediates.map(
 						(intermediate) =>
@@ -359,7 +359,7 @@ const ContextGeneratorService = {
 						")"
 					}.\n`;
 				} else {
-					newContext += `If we start our journey from <b>${
+					newContext += `\nIf we start our journey from <b>${
 						savedPlacesMap[direction.origin]?.displayName?.text
 					}</b>, then visit ${direction.intermediates
 						.map(
@@ -447,13 +447,13 @@ const ContextGeneratorService = {
 					}.\n`;
 				}
 			} else {
-				newContext += `There are ${
+				newContext += `\nThere are ${
 					direction.routes.length
 				} routes from <b>${
 					savedPlacesMap[direction.origin]?.displayName?.text
-				}</b> to <b>${
+				} to <b>${
 					savedPlacesMap[direction.destination]?.displayName?.text
-				}</b> by ${
+				} by ${
 					direction.travelMode.toLowerCase() === "transit"
 						? "public transport"
 						: direction.travelMode.toLowerCase() === "walking" ||
@@ -466,14 +466,14 @@ const ContextGeneratorService = {
 				}. They are:\n`;
 
 				direction.routes.forEach((route, index) => {
-					newContext += `${index + 1}. Via ${route.description} | ${
+					newContext += `\t${index + 1}. Via ${route.description} | ${
 						route.localizedValues.staticDuration.text
 					} (${route.localizedValues.distance.text})\n`;
 					if (direction.showSteps) {
 						route.legs.forEach((leg) =>
 							leg.steps.map((step) => {
 								if (step.navigationInstruction)
-									newContext += ` - ${step.navigationInstruction.instructions}\n`;
+									newContext += `\t - ${step.navigationInstruction.instructions}\n`;
 							})
 						);
 					}
@@ -610,6 +610,11 @@ const ContextGeneratorService = {
 
 		text += ContextGeneratorService.getNearbyContext(
 			nearbyPlacesMap,
+			savedPlacesMap
+		);
+
+		text += ContextGeneratorService.getDirectionContext(
+			directionInformation,
 			savedPlacesMap
 		);
 

@@ -307,21 +307,6 @@ export default function GlobalContextProvider({ children }) {
 	// };
 
 	const initQuery = {
-		title: "",
-		answer: {
-			type: "single-choice",
-			options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-			correct: -1,
-		},
-		classification: "",
-		references: [],
-	};
-
-	// const [query, setQuery] = useState({
-	// 	questions: [initQuery],
-	// });
-
-	const [query, setQuery] = useState({
 		question: "",
 		answer: {
 			type: "single-choice",
@@ -329,7 +314,13 @@ export default function GlobalContextProvider({ children }) {
 			correct: -1,
 		},
 		classification: "",
-	});
+	};
+
+	// const [query, setQuery] = useState({
+	// 	questions: [initQuery],
+	// });
+
+	const [query, setQuery] = useState(initQuery);
 
 	const [savedPlacesMap, setSavedPlacesMap] = useState({});
 	const [apiCallLogs, setApiCallLogs] = useState([]);

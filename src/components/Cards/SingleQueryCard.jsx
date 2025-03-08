@@ -11,6 +11,7 @@ import {
 	IconButton,
 	Card,
 	Divider,
+	Modal,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import LLMAnswers from "../Tables/LLMAnswers";
@@ -28,6 +29,8 @@ import {
 	AssignmentTurnedIn,
 	Api,
 	CopyAll,
+	DesignServices,
+	Settings,
 } from "@mui/icons-material";
 import { useAuth } from "@/contexts/AuthContext";
 import { showError, showSuccess } from "@/contexts/ToastProvider";
@@ -35,12 +38,16 @@ import { AppContext } from "@/contexts/AppContext";
 import ContextGeneratorService from "@/services/contextGeneratorService";
 import Pluralize from "pluralize";
 import ContextPreview from "../GoogleMaps/ContextPreview";
+import PromptDesigner from "../PromptDesigner";
 export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 	const [flag, setFlag] = useState(false);
 	const { setQueries } = useContext(AppContext);
 	const { isAuthenticated } = useAuth();
 	const [expanded, setExpanded] = useState(index === 0);
 	const [contextExpanded, setContextExpanded] = useState(false);
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	const handleDelete = async () => {
 		if (isAuthenticated) {
@@ -85,6 +92,15 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 
 	return (
 		<Card elevation={2}>
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<PromptDesigner query={entry} onClose={handleClose} />
+			</Modal>
+
 			<div
 				className="p-4 cursor-pointer flex flex-row"
 				onClick={toggleAccordion}
@@ -370,11 +386,12 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 								<Button
 									// variant="outlined"
 									color="secondary"
-									onClick={copyContext}
-									startIcon={<CopyAll />}
+									// onClick={copyContext}
+									onClick={handleOpen}
+									startIcon={<Settings />}
 									// className="mt-2"
 								>
-									Copy
+									Prompt
 								</Button>
 								<Button
 									// variant="contained"

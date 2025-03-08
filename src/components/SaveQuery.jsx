@@ -1,21 +1,27 @@
 // components/SaveQuery.jsx
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Typography, Box, Snackbar, TextField } from "@mui/material";
+import {
+	Button,
+	Typography,
+	Box,
+	Snackbar,
+	TextField,
+	Modal,
+} from "@mui/material";
+import PromptDesigner from "./PromptDesigner";
 import SaveIcon from "@mui/icons-material/Save";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Download } from "@mui/icons-material";
+import { CopyAll, Download, Settings } from "@mui/icons-material";
 import { GlobalContext } from "@/contexts/GlobalContext";
+import ContextGeneratorService from "@/services/contextGeneratorService";
 
 const SaveQuery = ({ query, onSave, onDiscard }) => {
 	const [showSnackbar, setShowSnackbar] = useState(false);
 	const [queryName, setQueryName] = useState(query?.name || "");
-	const handleSave = (e) => {
-		e.preventDefault();
-		onSave(queryName);
-		// setShowSnackbar(true);
-	};
+	const [open, setOpen] = React.useState(false);
 
 	const {
+		setQuery,
 		apiCallLogs,
 		selectedPlacesMap,
 		nearbyPlacesMap,
@@ -23,6 +29,17 @@ const SaveQuery = ({ query, onSave, onDiscard }) => {
 		routePlacesMap,
 		savedPlacesMap,
 	} = useContext(GlobalContext);
+
+	const handleOpen = () => {
+		setOpen(true);
+	};
+	const handleClose = () => setOpen(false);
+
+	const handleSave = (e) => {
+		e.preventDefault();
+		onSave(queryName);
+		// setShowSnackbar(true);
+	};
 
 	const handleDownload = () => {
 		const jsonString = JSON.stringify(
@@ -56,6 +73,17 @@ const SaveQuery = ({ query, onSave, onDiscard }) => {
 		URL.revokeObjectURL(href);
 	};
 
+	const copyContext = () => {
+		const textualContext = ContextGeneratorService.convertContextToText(
+			savedPlacesMap,
+			selectedPlacesMap,
+			nearbyPlacesMap,
+			directionInformation,
+			routePlacesMap
+		);
+		alert(textualContext);
+	};
+
 	useEffect(() => {
 		setQueryName(query?.name || "");
 	}, [query]);
@@ -65,10 +93,19 @@ const SaveQuery = ({ query, onSave, onDiscard }) => {
 			className="p-4 bg-blue-50 rounded-lg w-full"
 			onSubmit={handleSave}
 		>
+			<Modal
+				open={open}
+				onClose={handleClose}
+				aria-labelledby="modal-modal-title"
+				aria-describedby="modal-modal-description"
+			>
+				<PromptDesigner query={query} onClose={handleClose} />
+			</Modal>
+
 			<Typography variant="h6" gutterBottom>
 				{query?.id === undefined ? "Save" : "Update"} this to dataset?
 			</Typography>
-			<TextField
+			{/* <TextField
 				required
 				fullWidth
 				label="Query Name"
@@ -76,7 +113,7 @@ const SaveQuery = ({ query, onSave, onDiscard }) => {
 				value={queryName}
 				onChange={(e) => setQueryName(e.target.value)}
 				className="mb-3"
-			/>
+			/> */}
 			<Box display="flex" className="gap-2" mt={2}>
 				<Button
 					type="submit"
@@ -94,6 +131,15 @@ const SaveQuery = ({ query, onSave, onDiscard }) => {
 					// className="mt-2"
 				>
 					Download
+				</Button>
+				<Button
+					// variant="outlined"
+					color="secondary"
+					onClick={handleOpen}
+					startIcon={<Settings />}
+					// className="mt-2"
+				>
+					Prompt
 				</Button>
 			</Box>
 			{/* <Snackbar
