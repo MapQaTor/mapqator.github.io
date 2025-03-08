@@ -141,7 +141,7 @@ const ContextGeneratorService = {
 									savedPlacesMap[place_id][attribute]
 						  )
 						: "N/A";
-					return `${attributeName}: ${attributeValue}`;
+					return `\t${attributeName}: ${attributeValue}`;
 				})
 				.join("\n");
 			if (text !== "") {
@@ -156,6 +156,41 @@ const ContextGeneratorService = {
 		}
 		return newContext;
 	},
+
+	getPoiList: (e) => {
+		let text = "";
+		e.places.forEach((place, index) => {
+			text += `\t${index + 1}. ${
+				place.displayName?.text
+			} (${place.location.latitude.toFixed(
+				4
+			)}, ${place.location.longitude.toFixed(4)}) | ${
+				place.rating
+					? "Rating: " +
+					  place.rating +
+					  "*" +
+					  " (" +
+					  place.userRatingCount +
+					  ")"
+					: "Address:" + place.shortFormattedAddress
+			} ${
+				place.priceLevel
+					? `| ${template["priceLevel"](place.priceLevel)}`
+					: ""
+			} ${
+				e.routingSummaries && e.routingSummaries[index]?.legs[0]
+					? "|🚶🏾‍➡️" +
+					  e.routingSummaries[index].legs[0].duration +
+					  (e.routingSummaries[index].legs[0].distanceMeters
+							? " (" +
+							  e.routingSummaries[index].legs[0].distanceMeters +
+							  "m)"
+							: "")
+					: ""
+			}\n`;
+		});
+		return text;
+	},
 	getNearbyContext: (nearbyPlacesMap, savedPlacesMap) => {
 		let newContext = "";
 
@@ -165,7 +200,11 @@ const ContextGeneratorService = {
 			// }
 			newContext += `\nNearby ${Pluralize(convertFromSnake(e.type))} of ${
 				savedPlacesMap[e.locationBias]?.displayName?.text
-			}${
+			} (${savedPlacesMap[e.locationBias]?.location.latitude.toFixed(
+				4
+			)}, ${savedPlacesMap[e.locationBias]?.location.longitude.toFixed(
+				4
+			)})${
 				e.minRating > 0
 					? " with a minimum rating of " + e.minRating
 					: ""
@@ -179,33 +218,7 @@ const ContextGeneratorService = {
 				e.rankPreference === "DISTANCE" ? " (Rank by Distance)" : ""
 			}\n`;
 
-			e.places.forEach((place, index) => {
-				newContext += `${index + 1}. ${place.displayName?.text} | ${
-					place.rating
-						? "Rating: " +
-						  place.rating +
-						  "*" +
-						  " (" +
-						  place.userRatingCount +
-						  ")"
-						: "Address:" + place.shortFormattedAddress
-				} ${
-					place.priceLevel
-						? `| ${template["priceLevel"](place.priceLevel)}`
-						: ""
-				} ${
-					e.routingSummaries && e.routingSummaries[index]?.legs[0]
-						? "|🚶🏾‍➡️" +
-						  e.routingSummaries[index].legs[0].duration +
-						  (e.routingSummaries[index].legs[0].distanceMeters
-								? " (" +
-								  e.routingSummaries[index].legs[0]
-										.distanceMeters +
-								  "m)"
-								: "")
-						: ""
-				}\n`;
-			});
+			newContext += ContextGeneratorService.getPoiList(e);
 		});
 		return newContext;
 	},
@@ -513,6 +526,74 @@ const ContextGeneratorService = {
 		});
 		return newContext;
 	},
+
+	getRoutePlacesContext: (routePlacesMap, savedPlacesMap) => {
+		let newContext = "";
+		routePlacesMap.forEach((e, index) => {
+			// if (newContext.length > 0) {
+			// 	newContext += "\n";
+			// }
+			let text = `\n${Pluralize(convertFromSnake(e.type))} along the ${
+				travelMap[e.travelMode]
+			} route from ${
+				savedPlacesMap[e.origin].displayName.text
+			} (${savedPlacesMap[e.origin]?.location.latitude.toFixed(
+				4
+			)}, ${savedPlacesMap[e.origin]?.location.longitude.toFixed(
+				4
+			)}) to ${
+				savedPlacesMap[e.destination].displayName.text
+			} (${savedPlacesMap[e.destination]?.location.latitude.toFixed(
+				4
+			)}, ${savedPlacesMap[e.destination]?.location.longitude.toFixed(
+				4
+			)})`;
+
+			if (
+				e.routeModifiers.avoidTolls ||
+				e.routeModifiers.avoidHighways ||
+				e.routeModifiers.avoidFerries ||
+				e.routeModifiers.avoidIndoor
+			) {
+				text += ` (Avoiding `;
+				const avoid = [];
+				if (e.routeModifiers.avoidTolls) {
+					avoid.push(`tolls`);
+				}
+				if (e.routeModifiers.avoidHighways) {
+					avoid.push(`highways`);
+				}
+				if (e.routeModifiers.avoidFerries) {
+					avoid.push(`ferries`);
+				}
+				if (e.routeModifiers.avoidIndoor) {
+					avoid.push(`indoor`);
+				}
+				text += avoid.join(", ");
+				text += `)`;
+			}
+
+			text += `${
+				e.minRating > 0
+					? " with a minimum rating of " + e.minRating
+					: ""
+			}${
+				e.priceLevels.length > 0
+					? (e.minRating > 0 ? " and " : " ") +
+					  "price levels " +
+					  e.priceLevels.map((p) => priceMap[p]).join(" or ")
+					: ""
+			} are: ${
+				e.rankPreference === "DISTANCE" ? " (Rank by Distance)" : ""
+			}\n`;
+
+			newContext += text;
+
+			newContext += ContextGeneratorService.getPoiList(e);
+		});
+		return newContext;
+	},
+
 	convertContextToText: (
 		savedPlacesMap,
 		selectedPlacesMap,
@@ -521,7 +602,7 @@ const ContextGeneratorService = {
 		routePlacesMap
 	) => {
 		let text = "";
-
+		// console.log("Route Places Map", routePlacesMap);
 		text += ContextGeneratorService.getPlacesContext(
 			selectedPlacesMap,
 			savedPlacesMap
@@ -529,6 +610,11 @@ const ContextGeneratorService = {
 
 		text += ContextGeneratorService.getNearbyContext(
 			nearbyPlacesMap,
+			savedPlacesMap
+		);
+
+		text += ContextGeneratorService.getRoutePlacesContext(
+			routePlacesMap,
 			savedPlacesMap
 		);
 
