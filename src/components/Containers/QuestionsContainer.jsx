@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { getUserName } from "@/api/base";
 import categories from "@/database/categories.json";
-import QueryCard from "@/components/Cards/QueryCard";
+import QueryCard from "@/components/Cards/SingleQueryCard";
 import { AppContext } from "@/contexts/AppContext";
 import { convertFromSnake } from "@/services/utils";
 import { Download } from "@mui/icons-material";
