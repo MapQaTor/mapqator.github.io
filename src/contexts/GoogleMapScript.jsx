@@ -15,5 +15,21 @@ export default function GoogleMapWrapper({ children }) {
 		}
 	}, [isAuthenticated]);
 
+	return (
+		<LoadScript
+			// googleMapsApiKey="AIzaSyA8FR4zPdFgUNu4Rr_iuMYgcOb6gCCr21M"
+			googleMapsApiKey="AIzaSyC9AeoNIAYliPr7q2NtKgzH_4T7y2OHavY"
+			language="en"
+		>
+			{children}
+		</LoadScript>
+	);
 	return <>{children}</>;
+	// return googleMapsApiKey ? (
+	// 	<LoadScript googleMapsApiKey={googleMapsApiKey}>{children}</LoadScript>
+	// ) : googleMapsApiKey !== undefined ? (
+	// 	<LoadScript>{children}</LoadScript>
+	// ) : (
+	// 	<>{children}</>
+	// );
 }

@@ -1,5 +1,5 @@
 "use client";
-import QueryCard from "@/components/Cards/QueryCard";
+import QueryCard from "@/components/Cards/SingleQueryCard";
 import examples from "@/database/examples.json";
 import { Box, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
@@ -21,6 +21,7 @@ export default function ExplorePage() {
 							entry={query}
 							onEdit={() => router.push("/home/context#edit")}
 							mode="explore"
+							index={index}
 						/>
 					))}
 				</div>

@@ -17,7 +17,7 @@ export default function Navbar({ selected, setSelected }) {
 			? process.env.REACT_APP_BASE_URL
 			: process.env.NODE_ENV === "development"
 			? ""
-			: "https://mahirlabibdihan.github.io/mapquest"
+			: "https://mapqator.github.io"
 	);
 	const navItems = [
 		{ name: "Context", key: "context", icon: <MapIcon /> },

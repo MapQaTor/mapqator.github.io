@@ -1,36 +1,52 @@
+# MapQaTor Frontend
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Project Setup
 
-First, run the development server:
+Follow the step by step installation procedure to install and run this on your machine.
 
-```bash
+## Prerequisites
+
+Make sure you have node installed in your device.
+
+**`NodeJs`**: Install Nodejs from [here](https://nodejs.org/en/download/)
+
+## Installation <a name="configuration"></a>
+
+
+1.  Clone the repo
+
+```sh
+git clone https://github.com/mapqator/mapqator.github.io.git
+```
+
+2.  If you don't have git installed in your device then download zip
+3.  After installation or download go to the repository and open command line.
+
+### Configuring
+
+
+2. Install NPM packages
+
+```sh
+npm install
+```
+
+3.  Ensure backend is configured and running correctly on "http://localhost:5000" (note the port number)
+
+#### Run the project
+
+Go to your favourite code editor and run
+
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+You should find that the project is working!
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Adding new Map APIs
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Add or edit files in the `src/tools` and `src/mapServices` directories.

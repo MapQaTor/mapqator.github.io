@@ -3,15 +3,14 @@ import { useContext, useEffect, useState } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import ContextGeneratorService from "@/services/contextGeneratorService";
-import ContextStepper from "@/components/Steppers/ContextStepper";
 import { AppContext } from "@/contexts/AppContext";
-import example from "@/database/example.json";
+import example from "@/database/newexample.json";
 import mapApi from "@/api/mapApi";
 import dayjs from "dayjs";
 import KeyStoreButton from "@/components/Buttons/KeyStoreButton";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import ContextEditor from "@/components/GoogleMaps/ContextEditor";
 export default function ContextGenerator() {
-	const [activeStep, setActiveStep] = useState(0);
 	const {
 		selectedPlacesMap,
 		setSelectedPlacesMap,
@@ -28,14 +27,19 @@ export default function ContextGenerator() {
 		setCurrentInformation,
 		setContextStatus,
 		queryStatus,
+		activeStep,
+		setActiveStep,
+		savedPlacesMap,
+		setSavedPlacesMap,
+		setRoutePlacesMap,
 	} = useContext(GlobalContext);
-
-	const { savedPlacesMap, setSavedPlacesMap } = useContext(AppContext);
 
 	useEffect(() => {
 		const page = window.location.hash.substring(1);
 		setActiveStep(page === "edit" ? 1 : 0);
 	}, []);
+
+	const searchParams = useSearchParams();
 	// useEffect(() => {
 	// 	if (queryStatus === "empty") {
 	// 		router.push("/home");
@@ -44,6 +48,7 @@ export default function ContextGenerator() {
 
 	const router = useRouter();
 	const {
+		initRoutePlacesMap,
 		initSelectedPlacesMap,
 		initNearbyPlacesMap,
 		initPoisMap,
@@ -58,6 +63,7 @@ export default function ContextGenerator() {
 		setNearbyPlacesMap(initNearbyPlacesMap);
 		setCurrentInformation(initCurrentInformation);
 		setDirectionInformation(initDirectionInformation);
+		setRoutePlacesMap(initRoutePlacesMap);
 		setSelectedPlacesMap(initSelectedPlacesMap);
 		setSavedPlacesMap({});
 		setActiveStep(1);
@@ -74,7 +80,14 @@ export default function ContextGenerator() {
 	// };
 	const onFinish = () => {
 		setContextStatus("saved");
-		router.push("/home/question");
+
+		const params = searchParams.toString();
+
+		if (params) {
+			router.push(`/home/question?${params}`);
+		} else {
+			router.push("/home/question");
+		}
 	};
 
 	const handleSave = async (place_id) => {
@@ -102,8 +115,8 @@ export default function ContextGenerator() {
 		// for (let place_id in example.places) {
 		// 	await handleSave(place_id);
 		// }
-		setSavedPlacesMap(example.saved_places ?? {});
-		setSelectedPlacesMap(example.places ?? {});
+		setSavedPlacesMap(example.places ?? {});
+		setSelectedPlacesMap(example.place_details ?? {});
 		setDistanceMatrix(example.distance_matrix ?? {});
 		setDirectionInformation(example.directions ?? {});
 		setNearbyPlacesMap(example.nearby_places ?? {});
@@ -169,11 +182,11 @@ export default function ContextGenerator() {
 
 	return (
 		<Container maxWidth="md">
-			<Box sx={{ mt: 4, mb: 4 }}>
-				<h1 className="text-3xl md:text-4xl font-normal pb-5">
+			<Box sx={{ mt: 4, mb: 4 }} className="flex flex-col gap-6">
+				<h1 className="text-3xl md:text-4xl font-normal pb-2">
 					Create Geo-Spatial Context Using Map Services
 				</h1>
-				<ContextStepper
+				<ContextEditor
 					{...{
 						handleReset,
 						onFinish,

@@ -10,9 +10,12 @@ import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRobot } from "@fortawesome/free-solid-svg-icons";
 import {
+	Checklist,
 	Description,
 	KeyboardDoubleArrowDown,
 	KeyboardDoubleArrowRight,
+	ListAlt,
+	Save,
 } from "@mui/icons-material";
 
 export default function WorkFlow() {
@@ -22,7 +25,7 @@ export default function WorkFlow() {
 
 	useEffect(() => {
 		// Show the tooltip after a short delay
-		const timer = setTimeout(() => setShowTooltip(true), 1000);
+		const timer = setTimeout(() => setShowTooltip(true), 500);
 		return () => clearTimeout(timer);
 	}, []);
 
@@ -41,9 +44,8 @@ export default function WorkFlow() {
 					}}
 				/>
 			),
-			label: "Generate Context",
-			description:
-				"Generate rich, place-related contexts using our intuitive interface with Map Services.",
+			label: "Design Context",
+			description: "Design place-related contexts using Map Services.",
 			key: "context",
 			to: "/home/context",
 		},
@@ -55,9 +57,9 @@ export default function WorkFlow() {
 					}}
 				/>
 			),
-			label: "Create Question",
+			label: "Create QA Pairs",
 			description:
-				"Easily create relevant questions based on the map contexts you've generated.",
+				"Create questions and answers based on designed contexts.",
 			key: "question",
 			to: "/home/question",
 		},
@@ -66,20 +68,33 @@ export default function WorkFlow() {
 		// 	label: "Manage Datasets",
 		// 	description: "Organize and version your QnA datasets",
 		// },
+		// {
+		// 	icon: (
+		// 		<FontAwesomeIcon
+		// 			icon={faRobot}
+		// 			style={{
+		// 				fontSize: "2rem",
+		// 			}}
+		// 		/>
+		// 	),
+		// 	label: "Evaluate LLMs",
+		// 	description:
+		// 		"Context + Question pair will be used to evaluate the performance of closed-source LLMs.",
+		// 	key: "live_evaluation",
+		// 	to: "/home/evaluation",
+		// },
 		{
+			label: "Review and Save",
 			icon: (
-				<FontAwesomeIcon
-					icon={faRobot}
-					style={{
+				<Checklist
+					sx={{
 						fontSize: "2rem",
 					}}
 				/>
 			),
-			label: "Evaluate LLMs",
-			description:
-				"Context + Question pair will be used to evaluate the performance of closed-source LLMs.",
+			description: "Review and save the created QA pairs for your use.",
 			key: "live_evaluation",
-			to: "/home/evaluation",
+			to: "/home/review",
 		},
 	];
 
@@ -88,7 +103,7 @@ export default function WorkFlow() {
 			{steps.map((step, index) => (
 				<div
 					key={index}
-					className="flex flex-col md:flex-row items-center"
+					className="flex flex-col md:flex-row items-center md:w-1/3"
 				>
 					<Box
 						sx={{
@@ -182,7 +197,7 @@ export default function WorkFlow() {
 					</Box>
 					{index < steps.length - 1 && (
 						<>
-							<div className="hidden md:flex">
+							<div className="hidden md:flex p-4">
 								<KeyboardDoubleArrowRight />
 							</div>
 							<div className="flex md:hidden p-4">

@@ -9,7 +9,7 @@ class GptApi extends Api {
 	};
 	askGPTLive = async (context, query) => {
 		console.log(context, query);
-		return await this.post("/gpt/ask", { context, query });
+		return await this.post("/gpt/ask-many", { context, query });
 	};
 	generateQuestion = async (context) => {
 		return await this.post("/gpt/generate-question", { context });

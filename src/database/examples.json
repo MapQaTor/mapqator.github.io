@@ -1,651 +1,2010 @@
 [
 	{
-		"question": "I am planning a visit to Paris and want to maximize my time. If I spend 2 hours at the Louvre Museum in the morning, 1 hour at the Notre-Dame Cathedral around noon, and 1 hour at the Eiffel Tower in the afternoon, how much time should I allocate for travel between these places using public transport?",
+		"question": "Fastest time to go from Louvre Museum to Eiffel Tower by car?",
 		"answer": {
-			"type": "mcq",
-			"options": ["32 mins", "20 mins", "12 mins", "30 mins"],
-			"correct": 0
+			"type": "single-choice",
+			"options": ["14 mins", "15 mins", "16 mins", "17 mins"],
+			"correct": 1
 		},
-		"context": "Information of <b>Paris</b>:\n- Location: Paris, France.\n\nInformation of <b>Louvre Museum</b>:\n- Location: 75001 Paris, France.\n\nInformation of <b>Cathédrale Notre-Dame de Paris</b>:\n- Location: 6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France.\n\nInformation of <b>Eiffel Tower</b>:\n- Location: Av. Gustave Eiffel, 75007 Paris, France.\n\nTravel time from <b>Cathédrale Notre-Dame de Paris</b> to <b>Eiffel Tower</b> is:\n- By cycle: 20 mins (5.4 km).\n\nTravel time from <b>Louvre Museum</b> to <b>Cathédrale Notre-Dame de Paris</b> is:\n- By cycle: 12 mins (2.2 km).\n",
-		"context_json": {
-			"saved_places": {
-				"ChIJD7fiBh9u5kcRYJSMaMOCCwQ": {
-					"place_id": "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
-					"name": "Paris",
-					"formatted_address": "Paris, France",
-					"geometry": {
-						"location": {
-							"lat": 48.8575475,
-							"lng": 2.3513765
-						},
-						"viewport": {
-							"northeast": {
-								"lat": 48.90214747577797,
-								"lng": 2.469850925555473
-							},
-							"southwest": {
-								"lat": 48.81556220872687,
-								"lng": 2.224219054341255
-							}
-						}
-					},
-					"opening_hours": null,
-					"rating": null,
-					"reviews": null,
-					"price_level": null,
-					"user_ratings_total": null,
-					"delivery": null,
-					"dine_in": null,
-					"reservable": null,
-					"serves_beer": null,
-					"serves_breakfast": null,
-					"serves_brunch": null,
-					"serves_dinner": null,
-					"serves_lunch": null,
-					"serves_vegetarian_food": null,
-					"serves_wine": null,
-					"takeout": null,
-					"wheelchair_accessible_entrance": null,
-					"vicinity": "Paris",
-					"types": ["locality", "political"],
-					"last_updated": "2024-07-08T10:59:32.740Z",
-					"search_vector": "'franc':3B 'pari':1A,2B"
-				},
-				"ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
-					"place_id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
-					"name": "Louvre Museum",
-					"formatted_address": "75001 Paris, France",
-					"geometry": {
-						"location": {
-							"lat": 48.8606111,
-							"lng": 2.337644
-						},
-						"viewport": {
-							"northeast": {
-								"lat": 48.86355484999999,
-								"lng": 2.342908599999999
-							},
-							"southwest": {
-								"lat": 48.85824504999999,
-								"lng": 2.330669800000001
-							}
-						}
-					},
-					"opening_hours": {
-						"open_now": true,
-						"periods": [
-							{
-								"close": {
-									"day": 0,
-									"time": "1800"
-								},
-								"open": {
-									"day": 0,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 1,
-									"time": "1800"
-								},
-								"open": {
-									"day": 1,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 3,
-									"time": "2100"
-								},
-								"open": {
-									"day": 3,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 4,
-									"time": "1800"
-								},
-								"open": {
-									"day": 4,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 5,
-									"time": "2100"
-								},
-								"open": {
-									"day": 5,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 6,
-									"time": "1800"
-								},
-								"open": {
-									"day": 6,
-									"time": "0900"
-								}
-							}
-						],
-						"weekday_text": [
-							"Monday: 9:00 AM – 6:00 PM",
-							"Tuesday: Closed",
-							"Wednesday: 9:00 AM – 9:00 PM",
-							"Thursday: 9:00 AM – 6:00 PM",
-							"Friday: 9:00 AM – 9:00 PM",
-							"Saturday: 9:00 AM – 6:00 PM",
-							"Sunday: 9:00 AM – 6:00 PM"
-						]
-					},
-					"rating": 4.7,
-					"reviews": [
-						{
-							"author_name": "natasha Rode-Christoffersen",
-							"author_url": "https://www.google.com/maps/contrib/111892991130834694510/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjX7-cSnfqJXyo3TvyRy_9tqVMpp34gUqaEWIYg_ypUoWdV5e3A=s128-c0x00000000-cc-rp-mo-ba5",
-							"rating": 5,
-							"relative_time_description": "4 months ago",
-							"text": "It was beautiful I spent a little under half a day there and I really enjoyed myself. The entire museum was beautiful but my favorite part was definitely the fine art upstairs. You can get free tickets on the website (if you meet certain requirements) but be sure to get them early whether the same day or a couple of days before if you’re going during the busy season.",
-							"time": 1709834181,
-							"translated": false
-						},
-						{
-							"author_name": "Salvador Barajas-Valdivies",
-							"author_url": "https://www.google.com/maps/contrib/107746211768889336925/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWBpLkamDiNmAQk3rYnuJdmkC44tyXe3Cs544yT97gye2JOQnaaJg=s128-c0x00000000-cc-rp-mo-ba3",
-							"rating": 5,
-							"relative_time_description": "2 weeks ago",
-							"text": "We spent 5.5 hours inside and we could’ve used 5.5 more to explore the rest. It is truly a magnificent place! Be wary of large groups, they tend to be rude and cut every line if you don’t pay attention.",
-							"time": 1718715235,
-							"translated": false
-						},
-						{
-							"author_name": "Eric Gartner",
-							"author_url": "https://www.google.com/maps/contrib/102087083257904960242/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWi1KQr15hQxG-6TiuM4jPOkWfz0UPS61sgskZwDyYC3Vh7i3ZR=s128-c0x00000000-cc-rp-mo-ba5",
-							"rating": 5,
-							"relative_time_description": "2 weeks ago",
-							"text": "Best museum in the world. Be prepared to spend a few hours here. Make sure to have a reservation, which is free on the Paris museum website, so you can get in. They're flexible on the time if you arrive early. Lots of stairs so be prepared.",
-							"time": 1719064325,
-							"translated": false
-						},
-						{
-							"author_name": "M Kin",
-							"author_url": "https://www.google.com/maps/contrib/107084474704017804548/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWy2EYqDQPoZiWE5wJajJL1BcntNrFiA9H94IVrYCX6PaMorDPG=s128-c0x00000000-cc-rp-mo-ba2",
-							"rating": 5,
-							"relative_time_description": "4 months ago",
-							"text": "Stunning!\nStarting from the outside - the building itself is a sight to see. It is totally understandable why it used to be an imperial palace. Great location for beautiful pictures of Paris. The molding and the statues on the building are impressive.\nMoving on to the inside - the building is just as impressive. The ceilings are a work of art itself. The corridors are very spacious and nice to walk through.\nWalls and walls of art, literally every style and time period you can imagine. Statues, gold, plates, rugs, mantles, paintings, Crown Jewels and many more.\nThe only downside of the Louvre is that it is GIANT, so please plan your trip ahead! Otherwise you won't see everything you'd like to see because you will run out of time.\nWe did not see the Mona Lisa, it was too crowded. But I was not sad about that, other works of art were even more impressive than the Mona Lisa.",
-							"time": 1709940107,
-							"translated": false
-						},
-						{
-							"author_name": "Eltira Gaga",
-							"author_url": "https://www.google.com/maps/contrib/102807027999040152048/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjXbq_IT3atyg-dAYSpgi-dPrEMpJXx6EPT2GUaS5O811n-QpAzt=s128-c0x00000000-cc-rp-mo-ba4",
-							"rating": 5,
-							"relative_time_description": "2 weeks ago",
-							"text": "Although it took a little time to queue up, about 1-hour. But the Louvre is a very worthwhile place. It was used for three hours that day, which was only part of the visit to the Louvre. It is recommended that it takes 4-5 hours to visit the whole Louvre.",
-							"time": 1718958363,
-							"translated": false
-						}
-					],
-					"price_level": null,
-					"user_ratings_total": 312623,
-					"delivery": null,
-					"dine_in": null,
-					"reservable": null,
-					"serves_beer": null,
-					"serves_breakfast": null,
-					"serves_brunch": null,
-					"serves_dinner": null,
-					"serves_lunch": null,
-					"serves_vegetarian_food": null,
-					"serves_wine": null,
-					"takeout": null,
-					"wheelchair_accessible_entrance": true,
-					"vicinity": "Paris",
-					"types": [
-						"tourist_attraction",
-						"museum",
-						"point_of_interest",
-						"establishment"
-					],
-					"last_updated": "2024-07-08T10:45:06.304Z",
-					"search_vector": "'75001':3B 'franc':5B 'louvr':1A 'museum':2A 'pari':4B"
-				},
-				"ChIJATr1n-Fx5kcRjQb6q6cdQDY": {
-					"place_id": "ChIJATr1n-Fx5kcRjQb6q6cdQDY",
-					"name": "Cathédrale Notre-Dame de Paris",
-					"formatted_address": "6 Parvis Notre-Dame - Pl. Jean-Paul II, 75004 Paris, France",
-					"geometry": {
-						"location": {
-							"lat": 48.85296820000001,
-							"lng": 2.3499021
-						},
-						"viewport": {
-							"northeast": {
-								"lat": 48.8549007302915,
-								"lng": 2.35114505
-							},
-							"southwest": {
-								"lat": 48.8522027697085,
-								"lng": 2.346173250000001
-							}
-						}
-					},
-					"opening_hours": null,
-					"rating": 4.7,
-					"reviews": [
-						{
-							"author_name": "Mobile Gourmet",
-							"author_url": "https://www.google.com/maps/contrib/116728490754545184185/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWKQdxc4A-zKjaYuQaADjXkXIFxmhkjKJPlprqfa8cDmwvxxzA=s128-c0x00000000-cc-rp-mo-ba5",
-							"rating": 4,
-							"relative_time_description": "2 months ago",
-							"text": "A historically significant building. However, there are much more aesthetic historical buildings in France. Since there were renovations when I went, I couldn't examine it much. If you have been to Paris, it would of course be nice to visit this place too.",
-							"time": 1713553579,
-							"translated": false
-						},
-						{
-							"author_name": "Febe M.",
-							"author_url": "https://www.google.com/maps/contrib/105044235258997715880/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjXCGSBMueqmPIlhySxCVJQLa9Kc_l82mKjTsTWJxPYX3885z0ui=s128-c0x00000000-cc-rp-mo-ba4",
-							"rating": 5,
-							"relative_time_description": "3 months ago",
-							"text": "Even though the Cathedral was closed, due to the work of restoration, still there are different displays all around the church that show you the inside as well as detailing the different works necessary to bring the cathedral to its original glory. The Cathedral looks really beautiful also from the outside and even though it is temporarily closed still there are a lot of people who visit it, just to get a glimpse of it.",
-							"time": 1712436335,
-							"translated": false
-						},
-						{
-							"author_name": "Sylvia Lin",
-							"author_url": "https://www.google.com/maps/contrib/103708397504409242579/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWCiijdAGqfgbtTTAeIzLMXucZjKHXnmBIuT5JfBzAXYAur--Ua=s128-c0x00000000-cc-rp-mo-ba8",
-							"rating": 5,
-							"relative_time_description": "2 months ago",
-							"text": "Revisit this again, after the fire. Even though we cannot get inside, there are still lots of people in the plaza, admiring the Cathedrale from outside. There are also lots of information board addressing the reconstruction plans, pointing out interesting features, and so on. Still an interesting stop in my short revisit of the city.",
-							"time": 1715044243,
-							"translated": false
-						},
-						{
-							"author_name": "Highway Video",
-							"author_url": "https://www.google.com/maps/contrib/114783197435768198244/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjX2mICa0MZavJG1Dhic8xW_SnPTyzR5KFSHZByhzy0mCGUa2T0=s128-c0x00000000-cc-rp-mo-ba6",
-							"rating": 4,
-							"relative_time_description": "3 weeks ago",
-							"text": "When I visited Notre-Dame, it was closed due to the fire, so I couldn't see much. However, the sight of the cathedral, even from the outside, evoked a sense of awe and reverence. It's a beautiful building.",
-							"time": 1718808086,
-							"translated": false
-						},
-						{
-							"author_name": "Andy Tullett",
-							"author_url": "https://www.google.com/maps/contrib/109196839788113543264/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjWVpNr3Pa05Dv1q_3lbvl6o7iHX_Lj6xR-O7YffsCcm-8JJ5UwSjQ=s128-c0x00000000-cc-rp-mo-ba5",
-							"rating": 5,
-							"relative_time_description": "4 months ago",
-							"text": "While it was closed at the time due to the reconstruction work it's still an impressive site. At present there are various displays on the surrounding fences detailing the history and work taking place to restore the Cathedral to its former magnificence.\n\nTo one side there is a large stepped platform where you can climb up to take a photo or simply sit and enjoy the view.",
-							"time": 1709984504,
-							"translated": false
-						}
-					],
-					"price_level": null,
-					"user_ratings_total": 50795,
-					"delivery": null,
-					"dine_in": null,
-					"reservable": null,
-					"serves_beer": null,
-					"serves_breakfast": null,
-					"serves_brunch": null,
-					"serves_dinner": null,
-					"serves_lunch": null,
-					"serves_vegetarian_food": null,
-					"serves_wine": null,
-					"takeout": null,
-					"wheelchair_accessible_entrance": true,
-					"vicinity": "6 Parvis Notre Dame - Place Jean-Paul II, Paris",
-					"types": [
-						"tourist_attraction",
-						"church",
-						"place_of_worship",
-						"point_of_interest",
-						"establishment"
-					],
-					"last_updated": "2024-07-16T07:20:15.500Z",
-					"search_vector": "'6':7B '75004':17B 'cathédral':1A 'dame':4A,11B 'de':5A 'franc':19B 'ii':16B 'jean':14B 'jean-paul':13B 'notr':3A,10B 'notre-dam':2A,9B 'pari':6A,18B 'parvi':8B 'paul':15B 'pl':12B"
-				},
-				"ChIJLU7jZClu5kcR4PcOOO6p3I0": {
-					"place_id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
-					"name": "Eiffel Tower",
-					"formatted_address": "Av. Gustave Eiffel, 75007 Paris, France",
-					"geometry": {
-						"location": {
-							"lat": 48.85837009999999,
-							"lng": 2.2944813
-						},
-						"viewport": {
-							"northeast": {
-								"lat": 48.85991540000001,
-								"lng": 2.297764350000001
-							},
-							"southwest": {
-								"lat": 48.85614539999999,
-								"lng": 2.29196535
-							}
-						}
-					},
-					"opening_hours": {
-						"open_now": true,
-						"periods": [
-							{
-								"close": {
-									"day": 1,
-									"time": "0000"
-								},
-								"open": {
-									"day": 0,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 2,
-									"time": "0000"
-								},
-								"open": {
-									"day": 1,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 3,
-									"time": "0000"
-								},
-								"open": {
-									"day": 2,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 4,
-									"time": "0000"
-								},
-								"open": {
-									"day": 3,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 5,
-									"time": "0000"
-								},
-								"open": {
-									"day": 4,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 6,
-									"time": "0000"
-								},
-								"open": {
-									"day": 5,
-									"time": "0900"
-								}
-							},
-							{
-								"close": {
-									"day": 0,
-									"time": "0000"
-								},
-								"open": {
-									"day": 6,
-									"time": "0900"
-								}
-							}
-						],
-						"weekday_text": [
-							"Monday: 9:00 AM – 12:00 AM",
-							"Tuesday: 9:00 AM – 12:00 AM",
-							"Wednesday: 9:00 AM – 12:00 AM",
-							"Thursday: 9:00 AM – 12:00 AM",
-							"Friday: 9:00 AM – 12:00 AM",
-							"Saturday: 9:00 AM – 12:00 AM",
-							"Sunday: 9:00 AM – 12:00 AM"
-						]
-					},
-					"rating": 4.7,
-					"reviews": [
-						{
-							"author_name": "Gabriela Franco",
-							"author_url": "https://www.google.com/maps/contrib/115358726865804377514/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW24BgVMbNYeBDTRqN0ItohZ3qpuoTFrqXScSmUHQYZ9hy7CO7r=s128-c0x00000000-cc-rp-mo-ba3",
-							"rating": 5,
-							"relative_time_description": "a month ago",
-							"text": "Absolutely beautiful and breathtaking views! Highly recommend purchasing tickets ahead of time, especially if you wish to go up to the summit. You can make a line to purchase tickets the day of but it is not guaranteed you’ll get one.\n\nI purchased tickets for the early morning and it was not crowded, I was able to take my time walking the area and when we went up to the summit, it was not crowded. I loved everything about my experience and highly recommend visiting!\n\nI also recommend returning at night to see it light up!",
-							"time": 1717356823,
-							"translated": false
-						},
-						{
-							"author_name": "Jeremy Godfrey",
-							"author_url": "https://www.google.com/maps/contrib/109302687683473925624/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjVDBxICYEG8irm1KorGlRT3QDOBN2p75bMiPkW9qJcD2SNsKrYB=s128-c0x00000000-cc-rp-mo-ba5",
-							"rating": 5,
-							"relative_time_description": "2 weeks ago",
-							"text": "Seeing this has been a dream for a long time. It's as beautiful as shown on so many TV shows and movies.\n\nDidn't go up it but wanted to get a photo.\n\nLots of people around and be aware of folks trying to sell stuff or take your photos.",
-							"time": 1719847046,
-							"translated": false
-						},
-						{
-							"author_name": "Highway Video",
-							"author_url": "https://www.google.com/maps/contrib/114783197435768198244/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjX2mICa0MZavJG1Dhic8xW_SnPTyzR5KFSHZByhzy0mCGUa2T0=s128-c0x00000000-cc-rp-mo-ba6",
-							"rating": 5,
-							"relative_time_description": "3 weeks ago",
-							"text": "I absolutely love the twinkling Eiffel Tower and would go back again and again just to see it at night. It's such an amazing piece of architecture. The views from the top were breathtaking. We had champagne at the top, which added to our excitement, though it was very expensive. We also took a boat cruise, and the views of the Eiffel Tower from the river were amazing. Overall, experiencing the Eiffel Tower firsthand was a highlight of my trip to Paris, capturing both the city's grandeur and its timeless charm.",
-							"time": 1718786118,
-							"translated": false
-						},
-						{
-							"author_name": "Marissa McDowell",
-							"author_url": "https://www.google.com/maps/contrib/115019055823327334608/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjW64PhKwSDFnlLWGeY12O7NaxfgRMHxx52QPBzlYh4MW2Xvz8o=s128-c0x00000000-cc-rp-mo-ba3",
-							"rating": 5,
-							"relative_time_description": "2 weeks ago",
-							"text": "Spectacular!  I didn't have to line up for too long and bought tickets at the Eiffel Tower.  I went in the evening during summer only weeks before the Olympics.  Suggestion take a picnic rug and sit on the surroundings laws to watch the lights.",
-							"time": 1719756143,
-							"translated": false
-						},
-						{
-							"author_name": "Jeferson Kozenieski Couto",
-							"author_url": "https://www.google.com/maps/contrib/110919111696066078666/reviews",
-							"language": "en",
-							"original_language": "en",
-							"profile_photo_url": "https://lh3.googleusercontent.com/a-/ALV-UjU9GPAQuk7nt8ApQSTYX8k6r0x71hPclbjdTO4G_U6dP0k1dR__3w=s128-c0x00000000-cc-rp-mo-ba5",
-							"rating": 5,
-							"relative_time_description": "2 weeks ago",
-							"text": "It was my second time here. One of the largest tourist monuments in the world. It’s beautiful. It’s imposing. It’s exciting. One of the most amazing places I’ve visited. My last time here the tower was closed because of the snow. However, and after a lot of patience I managed to get in. Only the first and second floors were available. Still, it’s a spectacular view. The sunset is beautiful here. 🫶",
-							"time": 1719775763,
-							"translated": false
-						}
-					],
-					"price_level": null,
-					"user_ratings_total": 395308,
-					"delivery": null,
-					"dine_in": null,
-					"reservable": null,
-					"serves_beer": null,
-					"serves_breakfast": null,
-					"serves_brunch": null,
-					"serves_dinner": null,
-					"serves_lunch": null,
-					"serves_vegetarian_food": null,
-					"serves_wine": null,
-					"takeout": null,
-					"wheelchair_accessible_entrance": true,
-					"vicinity": "Avenue Gustave Eiffel, Paris",
-					"types": [
-						"tourist_attraction",
-						"point_of_interest",
-						"establishment"
-					],
-					"last_updated": "2024-07-16T07:52:05.624Z",
-					"search_vector": "'75007':6B 'av':3B 'eiffel':1A,5B 'franc':8B 'gustav':4B 'pari':7B 'tower':2A"
-				}
-			},
-			"distance_matrix": {
-				"ChIJATr1n-Fx5kcRjQb6q6cdQDY": {
-					"ChIJLU7jZClu5kcR4PcOOO6p3I0": {
-						"TRANSIT": {
-							"duration": "20 mins",
-							"distance": "5.4 km"
-						}
-					}
-				},
-				"ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
-					"ChIJATr1n-Fx5kcRjQb6q6cdQDY": {
-						"TRANSIT": {
-							"duration": "12 mins",
-							"distance": "2.2 km"
-						}
-					}
-				}
-			},
-			"places": {
-				"ChIJD7fiBh9u5kcRYJSMaMOCCwQ": {
-					"alias": "",
-					"selectedAttributes": ["formatted_address"],
-					"attributes": [
-						"place_id",
-						"name",
-						"formatted_address",
-						"geometry",
-						"vicinity",
-						"types",
-						"last_updated"
-					]
-				},
-				"ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
-					"alias": "",
-					"selectedAttributes": ["formatted_address"],
-					"attributes": [
-						"place_id",
-						"name",
-						"formatted_address",
-						"geometry",
-						"opening_hours",
-						"rating",
-						"reviews",
-						"user_ratings_total",
-						"wheelchair_accessible_entrance",
-						"vicinity",
-						"types",
-						"last_updated"
-					]
-				},
-				"ChIJATr1n-Fx5kcRjQb6q6cdQDY": {
-					"alias": "",
-					"selectedAttributes": ["formatted_address"],
-					"attributes": [
-						"place_id",
-						"name",
-						"formatted_address",
-						"geometry",
-						"rating",
-						"reviews",
-						"user_ratings_total",
-						"wheelchair_accessible_entrance",
-						"vicinity",
-						"types",
-						"last_updated"
-					]
-				},
-				"ChIJLU7jZClu5kcR4PcOOO6p3I0": {
-					"alias": "",
-					"selectedAttributes": ["formatted_address"],
-					"attributes": [
-						"place_id",
-						"name",
-						"formatted_address",
-						"geometry",
-						"opening_hours",
-						"rating",
-						"reviews",
-						"user_ratings_total",
-						"wheelchair_accessible_entrance",
-						"vicinity",
-						"types",
-						"last_updated"
-					]
-				}
-			},
-			"nearby_places": {},
-			"current_information": {
-				"time": null,
-				"day": "",
-				"location": ""
-			},
-			"pois": {},
-			"directions": {}
-		},
-		"classification": "trip",
-		"context_gpt": "",
-		"username": "mahirlabibdihan",
-		"evaluation": [
+		"classification": "routing",
+		"name": "Louvre + Eiffel",
+		"api_call_logs": [
 			{
-				"answer": "Option1 (12 mins + 20 mins = 32 mins)",
-				"verdict": "right",
-				"model": "GPT-4"
+				"url": "https://places.googleapis.com/v1/places:searchText",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "places.id,places.displayName,places.shortFormattedAddress,places.location",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"textQuery": "Louvre Museum",
+					"maxResultCount": 5
+				},
+				"uuid": 1734354943827,
+				"responseTime": 1745,
+				"result": {
+					"places": [
+						{
+							"id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+							"location": {
+								"latitude": 48.8606111,
+								"longitude": 2.337644
+							},
+							"displayName": {
+								"text": "Louvre Museum",
+								"languageCode": "en"
+							},
+							"shortFormattedAddress": "Cour Carrée, Paris"
+						}
+					]
+				}
 			},
 			{
-				"answer": "Option1 (12 mins + 20 mins = 32 mins)",
-				"verdict": "right",
-				"model": "GPT-3.5"
+				"url": "https://places.googleapis.com/v1/places:searchText",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "places.id,places.displayName,places.shortFormattedAddress,places.location",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"textQuery": "Eiffel Tower",
+					"maxResultCount": 5
+				},
+				"uuid": 1734354950551,
+				"responseTime": 1588,
+				"result": {
+					"places": [
+						{
+							"id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+							"location": {
+								"latitude": 48.858370099999995,
+								"longitude": 2.2944812999999997
+							},
+							"displayName": {
+								"text": "Eiffel Tower",
+								"languageCode": "en"
+							},
+							"shortFormattedAddress": "Eiffel Tower, Av. Gustave Eiffel, Paris"
+						}
+					]
+				}
+			},
+			{
+				"url": "https://places.googleapis.com/v1/places:searchText",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.rating,places.priceLevel,places.shortFormattedAddress,places.userRatingCount,places.location,routingSummaries",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"textQuery": "restaurant ",
+					"rankPreference": "RELEVANCE",
+					"includedType": "restaurant",
+					"minRating": 0,
+					"priceLevels": [],
+					"maxResultCount": 5,
+					"strictTypeFiltering": true,
+					"locationBias": {
+						"circle": {
+							"center": {
+								"latitude": 48.858370099999995,
+								"longitude": 2.2944812999999997
+							},
+							"radius": 0
+						}
+					},
+					"languageCode": "en",
+					"routingParameters": {
+						"origin": {
+							"latitude": 48.858370099999995,
+							"longitude": 2.2944812999999997
+						},
+						"travelMode": "WALK"
+					}
+				},
+				"uuid": 1734354972040,
+				"responseTime": 1877,
+				"result": {
+					"places": [
+						{
+							"id": "ChIJD7OFbPJx5kcRvSE6GXkPbM4",
+							"rating": 4.3,
+							"location": {
+								"latitude": 48.854677099999996,
+								"longitude": 2.2951612000000003
+							},
+							"displayName": {
+								"text": "Café Fleur",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 2766,
+							"formattedAddress": "38 Av. de Suffren, 75015 Paris, France",
+							"shortFormattedAddress": "38 Av. de Suffren, Paris"
+						},
+						{
+							"id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+							"rating": 4.4,
+							"location": {
+								"latitude": 48.8583698,
+								"longitude": 2.2944833
+							},
+							"priceLevel": "PRICE_LEVEL_VERY_EXPENSIVE",
+							"displayName": {
+								"text": "Jules Verne",
+								"languageCode": "en"
+							},
+							"userRatingCount": 2842,
+							"formattedAddress": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+							"shortFormattedAddress": "Avenue Gustave Eiffel 2ème, Eiffel Tower, Av. Anatole France, Paris"
+						},
+						{
+							"id": "ChIJ35cvlHJv5kcRdy-cKpnmD1E",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8599959,
+								"longitude": 2.3005991
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Linette",
+								"languageCode": "en"
+							},
+							"userRatingCount": 1543,
+							"formattedAddress": "16 Av. Rapp, 75007 Paris, France",
+							"shortFormattedAddress": "16 Av. Rapp, Paris"
+						},
+						{
+							"id": "ChIJqfgQWhtw5kcRI20GFmcJZlI",
+							"rating": 4.6,
+							"location": {
+								"latitude": 48.851937899999996,
+								"longitude": 2.2889287
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "L'Abreuvoir",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 3451,
+							"formattedAddress": "24 Rue du Dr Finlay, 75015 Paris, France",
+							"shortFormattedAddress": "24 Rue du Dr Finlay, Paris"
+						},
+						{
+							"id": "ChIJVZDyfeBv5kcR9jN7g8cuT5g",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8596979,
+								"longitude": 2.2992811
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Au bon accueil",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 732,
+							"formattedAddress": "14 Rue de Monttessuy, 75007 Paris, France",
+							"shortFormattedAddress": "14 Rue de Monttessuy, Paris"
+						}
+					],
+					"routingSummaries": [
+						{
+							"legs": [
+								{
+									"duration": "440s",
+									"distanceMeters": 540
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e671f26c85b30f:0xce6c0f79193a21bd!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "0s"
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe1f2e9fe97:0xb320f5fd1146968f!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "466s",
+									"distanceMeters": 561
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66f72942f97df:0x510fe6992a9c2f77!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "980s",
+									"distanceMeters": 1185
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e6701b5a10f8a9:0x5266096716066d23!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "369s",
+									"distanceMeters": 440
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe07df29055:0x984f2ec7837b33f6!3e2"
+						}
+					]
+				}
+			},
+			{
+				"url": "https://routes.googleapis.com/directions/v2:computeRoutes",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "routes.distanceMeters,routes.staticDuration,routes.description,routes.localizedValues,routes.optimized_intermediate_waypoint_index,routes.legs.steps.navigationInstruction,routes.legs.steps.transitDetails,routes.legs.localizedValues,routes.legs.steps.travelMode,routes.legs.steps.localizedValues,routes.legs.polyline,routes.polyline",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"origin": {
+						"location": {
+							"latLng": {
+								"latitude": 48.8606111,
+								"longitude": 2.337644
+							}
+						}
+					},
+					"destination": {
+						"location": {
+							"latLng": {
+								"latitude": 48.858370099999995,
+								"longitude": 2.2944812999999997
+							}
+						}
+					},
+					"travelMode": "DRIVE",
+					"intermediates": [],
+					"routeModifiers": {
+						"avoidIndoor": false
+					},
+					"optimizeWaypointOrder": false,
+					"extraComputations": [
+						"HTML_FORMATTED_NAVIGATION_INSTRUCTIONS"
+					],
+					"units": "METRIC",
+					"languageCode": "en",
+					"routingPreference": "TRAFFIC_UNAWARE",
+					"computeAlternativeRoutes": true
+				},
+				"uuid": 1734354989429,
+				"responseTime": 1672,
+				"result": {
+					"routes": [
+						{
+							"legs": [
+								{
+									"steps": [
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "DEPART",
+												"instructions": "Head <b>east</b> on <b>Quai François Mitterrand</b> toward <b>Pont des Arts</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai du Louvre</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.3 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Pont Neuf</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Quai de Conti</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "<b>Quai de Conti</b> turns slightly <b>left</b> and becomes <b>Quai Malaquais</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Keep <b>right</b> to continue on <b>Quai Malaquais</b>/<wbr/><b>Quai Voltaire</b><div style=\"font-size:0.9em\">Continue to follow Quai Voltaire</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Valéry Giscard d'Estaing</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Anatole France</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.1 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Voie Expresse Rive Gauche</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "1.2 km"
+												},
+												"staticDuration": {
+													"text": "4 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai d'Orsay</b>/<wbr/><b>Bd Saint-Germain</b><div style=\"font-size:0.9em\">Continue to follow Quai d'Orsay</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.6 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Jacques Chirac</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "RAMP_LEFT",
+												"instructions": "Take the <b>Pont d'Iéna</b> ramp on the <b>left</b> to <b>Avenue de Suffren</b><div style=\"font-size:0.9em\">Parts of this road may be closed at certain times or days</div>"
+											}
+										}
+									],
+									"polyline": {
+										"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+									},
+									"localizedValues": {
+										"distance": {
+											"text": "4.5 km"
+										},
+										"duration": {
+											"text": "15 mins"
+										},
+										"staticDuration": {
+											"text": "15 mins"
+										}
+									}
+								}
+							],
+							"polyline": {
+								"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+							},
+							"description": "Quai d'Orsay",
+							"distanceMeters": 4494,
+							"staticDuration": "908s",
+							"localizedValues": {
+								"distance": {
+									"text": "4.5 km"
+								},
+								"duration": {
+									"text": "15 mins"
+								},
+								"staticDuration": {
+									"text": "15 mins"
+								}
+							}
+						}
+					]
+				}
 			}
 		],
-		"human": {
-			"answer": null,
-			"explanation": null,
-			"username": null
+		"context_json": {
+			"places": {
+				"ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
+					"id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+					"displayName": {
+						"text": "Louvre Museum"
+					},
+					"shortFormattedAddress": "Cour Carrée, Paris",
+					"location": {
+						"latitude": 48.8606111,
+						"longitude": 2.337644
+					},
+					"uuid": 1734354943827,
+					"mapService": "googleMaps",
+					"hidden": false
+				},
+				"ChIJLU7jZClu5kcR4PcOOO6p3I0": {
+					"id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+					"displayName": {
+						"text": "Eiffel Tower"
+					},
+					"shortFormattedAddress": "Eiffel Tower, Av. Gustave Eiffel, Paris",
+					"location": {
+						"latitude": 48.858370099999995,
+						"longitude": 2.2944812999999997
+					},
+					"uuid": 1734354950551,
+					"mapService": "googleMaps",
+					"hidden": false
+				},
+				"ChIJD7OFbPJx5kcRvSE6GXkPbM4": {
+					"id": "ChIJD7OFbPJx5kcRvSE6GXkPbM4",
+					"rating": 4.3,
+					"location": {
+						"latitude": 48.854677099999996,
+						"longitude": 2.2951612000000003
+					},
+					"displayName": {
+						"text": "Café Fleur",
+						"languageCode": "fr"
+					},
+					"userRatingCount": 2766,
+					"formattedAddress": "38 Av. de Suffren, 75015 Paris, France",
+					"shortFormattedAddress": "38 Av. de Suffren, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJl_7p8uFv5kcRj5ZGEf31ILM": {
+					"id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+					"rating": 4.4,
+					"location": {
+						"latitude": 48.8583698,
+						"longitude": 2.2944833
+					},
+					"priceLevel": "PRICE_LEVEL_VERY_EXPENSIVE",
+					"displayName": {
+						"text": "Jules Verne",
+						"languageCode": "en"
+					},
+					"userRatingCount": 2842,
+					"formattedAddress": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+					"shortFormattedAddress": "Avenue Gustave Eiffel 2ème, Eiffel Tower, Av. Anatole France, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJ35cvlHJv5kcRdy-cKpnmD1E": {
+					"id": "ChIJ35cvlHJv5kcRdy-cKpnmD1E",
+					"rating": 4.5,
+					"location": {
+						"latitude": 48.8599959,
+						"longitude": 2.3005991
+					},
+					"priceLevel": "PRICE_LEVEL_MODERATE",
+					"displayName": {
+						"text": "Linette",
+						"languageCode": "en"
+					},
+					"userRatingCount": 1543,
+					"formattedAddress": "16 Av. Rapp, 75007 Paris, France",
+					"shortFormattedAddress": "16 Av. Rapp, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJqfgQWhtw5kcRI20GFmcJZlI": {
+					"id": "ChIJqfgQWhtw5kcRI20GFmcJZlI",
+					"rating": 4.6,
+					"location": {
+						"latitude": 48.851937899999996,
+						"longitude": 2.2889287
+					},
+					"priceLevel": "PRICE_LEVEL_MODERATE",
+					"displayName": {
+						"text": "L'Abreuvoir",
+						"languageCode": "fr"
+					},
+					"userRatingCount": 3451,
+					"formattedAddress": "24 Rue du Dr Finlay, 75015 Paris, France",
+					"shortFormattedAddress": "24 Rue du Dr Finlay, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJVZDyfeBv5kcR9jN7g8cuT5g": {
+					"id": "ChIJVZDyfeBv5kcR9jN7g8cuT5g",
+					"rating": 4.5,
+					"location": {
+						"latitude": 48.8596979,
+						"longitude": 2.2992811
+					},
+					"priceLevel": "PRICE_LEVEL_MODERATE",
+					"displayName": {
+						"text": "Au bon accueil",
+						"languageCode": "fr"
+					},
+					"userRatingCount": 732,
+					"formattedAddress": "14 Rue de Monttessuy, 75007 Paris, France",
+					"shortFormattedAddress": "14 Rue de Monttessuy, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				}
+			},
+			"place_details": {},
+			"nearby_places": [
+				{
+					"locationBias": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+					"type": "restaurant",
+					"keyword": "",
+					"minRating": 0,
+					"priceLevels": [],
+					"rankPreference": "RELEVANCE",
+					"places": [
+						{
+							"id": "ChIJD7OFbPJx5kcRvSE6GXkPbM4",
+							"rating": 4.3,
+							"location": {
+								"latitude": 48.854677099999996,
+								"longitude": 2.2951612000000003
+							},
+							"displayName": {
+								"text": "Café Fleur",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 2766,
+							"formattedAddress": "38 Av. de Suffren, 75015 Paris, France",
+							"shortFormattedAddress": "38 Av. de Suffren, Paris"
+						},
+						{
+							"id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+							"rating": 4.4,
+							"location": {
+								"latitude": 48.8583698,
+								"longitude": 2.2944833
+							},
+							"priceLevel": "PRICE_LEVEL_VERY_EXPENSIVE",
+							"displayName": {
+								"text": "Jules Verne",
+								"languageCode": "en"
+							},
+							"userRatingCount": 2842,
+							"formattedAddress": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+							"shortFormattedAddress": "Avenue Gustave Eiffel 2ème, Eiffel Tower, Av. Anatole France, Paris"
+						},
+						{
+							"id": "ChIJ35cvlHJv5kcRdy-cKpnmD1E",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8599959,
+								"longitude": 2.3005991
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Linette",
+								"languageCode": "en"
+							},
+							"userRatingCount": 1543,
+							"formattedAddress": "16 Av. Rapp, 75007 Paris, France",
+							"shortFormattedAddress": "16 Av. Rapp, Paris"
+						},
+						{
+							"id": "ChIJqfgQWhtw5kcRI20GFmcJZlI",
+							"rating": 4.6,
+							"location": {
+								"latitude": 48.851937899999996,
+								"longitude": 2.2889287
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "L'Abreuvoir",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 3451,
+							"formattedAddress": "24 Rue du Dr Finlay, 75015 Paris, France",
+							"shortFormattedAddress": "24 Rue du Dr Finlay, Paris"
+						},
+						{
+							"id": "ChIJVZDyfeBv5kcR9jN7g8cuT5g",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8596979,
+								"longitude": 2.2992811
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Au bon accueil",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 732,
+							"formattedAddress": "14 Rue de Monttessuy, 75007 Paris, France",
+							"shortFormattedAddress": "14 Rue de Monttessuy, Paris"
+						}
+					],
+					"routingSummaries": [
+						{
+							"legs": [
+								{
+									"duration": "440s",
+									"distanceMeters": 540
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e671f26c85b30f:0xce6c0f79193a21bd!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "0s"
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe1f2e9fe97:0xb320f5fd1146968f!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "466s",
+									"distanceMeters": 561
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66f72942f97df:0x510fe6992a9c2f77!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "980s",
+									"distanceMeters": 1185
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e6701b5a10f8a9:0x5266096716066d23!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "369s",
+									"distanceMeters": 440
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe07df29055:0x984f2ec7837b33f6!3e2"
+						}
+					],
+					"uuid": 1734354972040
+				}
+			],
+			"directions": [
+				{
+					"origin": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+					"destination": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+					"intermediates": [],
+					"travelMode": "DRIVE",
+					"optimizeWaypointOrder": false,
+					"routeModifiers": {},
+					"routes": [
+						{
+							"legs": [
+								{
+									"steps": [
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "DEPART",
+												"instructions": "Head <b>east</b> on <b>Quai François Mitterrand</b> toward <b>Pont des Arts</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai du Louvre</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.3 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Pont Neuf</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Quai de Conti</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "<b>Quai de Conti</b> turns slightly <b>left</b> and becomes <b>Quai Malaquais</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Keep <b>right</b> to continue on <b>Quai Malaquais</b>/<wbr/><b>Quai Voltaire</b><div style=\"font-size:0.9em\">Continue to follow Quai Voltaire</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Valéry Giscard d'Estaing</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Anatole France</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.1 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Voie Expresse Rive Gauche</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "1.2 km"
+												},
+												"staticDuration": {
+													"text": "4 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai d'Orsay</b>/<wbr/><b>Bd Saint-Germain</b><div style=\"font-size:0.9em\">Continue to follow Quai d'Orsay</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.6 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Jacques Chirac</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "RAMP_LEFT",
+												"instructions": "Take the <b>Pont d'Iéna</b> ramp on the <b>left</b> to <b>Avenue de Suffren</b><div style=\"font-size:0.9em\">Parts of this road may be closed at certain times or days</div>"
+											}
+										}
+									],
+									"polyline": {
+										"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+									},
+									"localizedValues": {
+										"distance": {
+											"text": "4.5 km"
+										},
+										"duration": {
+											"text": "15 mins"
+										},
+										"staticDuration": {
+											"text": "15 mins"
+										}
+									}
+								}
+							],
+							"polyline": {
+								"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+							},
+							"description": "Quai d'Orsay",
+							"distanceMeters": 4494,
+							"staticDuration": "908s",
+							"localizedValues": {
+								"distance": {
+									"text": "4.5 km"
+								},
+								"duration": {
+									"text": "15 mins"
+								},
+								"staticDuration": {
+									"text": "15 mins"
+								}
+							}
+						}
+					],
+					"showSteps": true,
+					"uuid": 1734354989429
+				}
+			],
+			"route_places": []
+		}
+	},
+	{
+		"question": "Nearby restaurant of Eiffel Tower with over 2000 user ratings and at least 4.5* rating",
+		"answer": {
+			"type": "single-choice",
+			"options": ["Café Fleur", "Jules Verne", "Linette", "L'Abreuvoir"],
+			"correct": 3
+		},
+		"classification": "nearby",
+		"name": "Louvre + Eiffel",
+		"api_call_logs": [
+			{
+				"url": "https://places.googleapis.com/v1/places:searchText",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "places.id,places.displayName,places.shortFormattedAddress,places.location",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"textQuery": "Louvre Museum",
+					"maxResultCount": 5
+				},
+				"uuid": 1734354943827,
+				"responseTime": 1745,
+				"result": {
+					"places": [
+						{
+							"id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+							"location": {
+								"latitude": 48.8606111,
+								"longitude": 2.337644
+							},
+							"displayName": {
+								"text": "Louvre Museum",
+								"languageCode": "en"
+							},
+							"shortFormattedAddress": "Cour Carrée, Paris"
+						}
+					]
+				}
+			},
+			{
+				"url": "https://places.googleapis.com/v1/places:searchText",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "places.id,places.displayName,places.shortFormattedAddress,places.location",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"textQuery": "Eiffel Tower",
+					"maxResultCount": 5
+				},
+				"uuid": 1734354950551,
+				"responseTime": 1588,
+				"result": {
+					"places": [
+						{
+							"id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+							"location": {
+								"latitude": 48.858370099999995,
+								"longitude": 2.2944812999999997
+							},
+							"displayName": {
+								"text": "Eiffel Tower",
+								"languageCode": "en"
+							},
+							"shortFormattedAddress": "Eiffel Tower, Av. Gustave Eiffel, Paris"
+						}
+					]
+				}
+			},
+			{
+				"url": "https://places.googleapis.com/v1/places:searchText",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "places.id,places.displayName,places.formattedAddress,places.rating,places.priceLevel,places.shortFormattedAddress,places.userRatingCount,places.location,routingSummaries",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"textQuery": "restaurant ",
+					"rankPreference": "RELEVANCE",
+					"includedType": "restaurant",
+					"minRating": 0,
+					"priceLevels": [],
+					"maxResultCount": 5,
+					"strictTypeFiltering": true,
+					"locationBias": {
+						"circle": {
+							"center": {
+								"latitude": 48.858370099999995,
+								"longitude": 2.2944812999999997
+							},
+							"radius": 0
+						}
+					},
+					"languageCode": "en",
+					"routingParameters": {
+						"origin": {
+							"latitude": 48.858370099999995,
+							"longitude": 2.2944812999999997
+						},
+						"travelMode": "WALK"
+					}
+				},
+				"uuid": 1734354972040,
+				"responseTime": 1877,
+				"result": {
+					"places": [
+						{
+							"id": "ChIJD7OFbPJx5kcRvSE6GXkPbM4",
+							"rating": 4.3,
+							"location": {
+								"latitude": 48.854677099999996,
+								"longitude": 2.2951612000000003
+							},
+							"displayName": {
+								"text": "Café Fleur",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 2766,
+							"formattedAddress": "38 Av. de Suffren, 75015 Paris, France",
+							"shortFormattedAddress": "38 Av. de Suffren, Paris"
+						},
+						{
+							"id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+							"rating": 4.4,
+							"location": {
+								"latitude": 48.8583698,
+								"longitude": 2.2944833
+							},
+							"priceLevel": "PRICE_LEVEL_VERY_EXPENSIVE",
+							"displayName": {
+								"text": "Jules Verne",
+								"languageCode": "en"
+							},
+							"userRatingCount": 2842,
+							"formattedAddress": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+							"shortFormattedAddress": "Avenue Gustave Eiffel 2ème, Eiffel Tower, Av. Anatole France, Paris"
+						},
+						{
+							"id": "ChIJ35cvlHJv5kcRdy-cKpnmD1E",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8599959,
+								"longitude": 2.3005991
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Linette",
+								"languageCode": "en"
+							},
+							"userRatingCount": 1543,
+							"formattedAddress": "16 Av. Rapp, 75007 Paris, France",
+							"shortFormattedAddress": "16 Av. Rapp, Paris"
+						},
+						{
+							"id": "ChIJqfgQWhtw5kcRI20GFmcJZlI",
+							"rating": 4.6,
+							"location": {
+								"latitude": 48.851937899999996,
+								"longitude": 2.2889287
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "L'Abreuvoir",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 3451,
+							"formattedAddress": "24 Rue du Dr Finlay, 75015 Paris, France",
+							"shortFormattedAddress": "24 Rue du Dr Finlay, Paris"
+						},
+						{
+							"id": "ChIJVZDyfeBv5kcR9jN7g8cuT5g",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8596979,
+								"longitude": 2.2992811
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Au bon accueil",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 732,
+							"formattedAddress": "14 Rue de Monttessuy, 75007 Paris, France",
+							"shortFormattedAddress": "14 Rue de Monttessuy, Paris"
+						}
+					],
+					"routingSummaries": [
+						{
+							"legs": [
+								{
+									"duration": "440s",
+									"distanceMeters": 540
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e671f26c85b30f:0xce6c0f79193a21bd!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "0s"
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe1f2e9fe97:0xb320f5fd1146968f!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "466s",
+									"distanceMeters": 561
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66f72942f97df:0x510fe6992a9c2f77!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "980s",
+									"distanceMeters": 1185
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e6701b5a10f8a9:0x5266096716066d23!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "369s",
+									"distanceMeters": 440
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe07df29055:0x984f2ec7837b33f6!3e2"
+						}
+					]
+				}
+			},
+			{
+				"url": "https://routes.googleapis.com/directions/v2:computeRoutes",
+				"method": "POST",
+				"headers": {
+					"Content-Type": "application/json",
+					"X-Goog-FieldMask": "routes.distanceMeters,routes.staticDuration,routes.description,routes.localizedValues,routes.optimized_intermediate_waypoint_index,routes.legs.steps.navigationInstruction,routes.legs.steps.transitDetails,routes.legs.localizedValues,routes.legs.steps.travelMode,routes.legs.steps.localizedValues,routes.legs.polyline,routes.polyline",
+					"X-Goog-Api-Key": "key:GOOGLE_MAPS_API_KEY"
+				},
+				"data": {
+					"origin": {
+						"location": {
+							"latLng": {
+								"latitude": 48.8606111,
+								"longitude": 2.337644
+							}
+						}
+					},
+					"destination": {
+						"location": {
+							"latLng": {
+								"latitude": 48.858370099999995,
+								"longitude": 2.2944812999999997
+							}
+						}
+					},
+					"travelMode": "DRIVE",
+					"intermediates": [],
+					"routeModifiers": {
+						"avoidIndoor": false
+					},
+					"optimizeWaypointOrder": false,
+					"extraComputations": [
+						"HTML_FORMATTED_NAVIGATION_INSTRUCTIONS"
+					],
+					"units": "METRIC",
+					"languageCode": "en",
+					"routingPreference": "TRAFFIC_UNAWARE",
+					"computeAlternativeRoutes": true
+				},
+				"uuid": 1734354989429,
+				"responseTime": 1672,
+				"result": {
+					"routes": [
+						{
+							"legs": [
+								{
+									"steps": [
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "DEPART",
+												"instructions": "Head <b>east</b> on <b>Quai François Mitterrand</b> toward <b>Pont des Arts</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai du Louvre</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.3 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Pont Neuf</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Quai de Conti</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "<b>Quai de Conti</b> turns slightly <b>left</b> and becomes <b>Quai Malaquais</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Keep <b>right</b> to continue on <b>Quai Malaquais</b>/<wbr/><b>Quai Voltaire</b><div style=\"font-size:0.9em\">Continue to follow Quai Voltaire</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Valéry Giscard d'Estaing</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Anatole France</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.1 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Voie Expresse Rive Gauche</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "1.2 km"
+												},
+												"staticDuration": {
+													"text": "4 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai d'Orsay</b>/<wbr/><b>Bd Saint-Germain</b><div style=\"font-size:0.9em\">Continue to follow Quai d'Orsay</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.6 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Jacques Chirac</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "RAMP_LEFT",
+												"instructions": "Take the <b>Pont d'Iéna</b> ramp on the <b>left</b> to <b>Avenue de Suffren</b><div style=\"font-size:0.9em\">Parts of this road may be closed at certain times or days</div>"
+											}
+										}
+									],
+									"polyline": {
+										"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+									},
+									"localizedValues": {
+										"distance": {
+											"text": "4.5 km"
+										},
+										"duration": {
+											"text": "15 mins"
+										},
+										"staticDuration": {
+											"text": "15 mins"
+										}
+									}
+								}
+							],
+							"polyline": {
+								"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+							},
+							"description": "Quai d'Orsay",
+							"distanceMeters": 4494,
+							"staticDuration": "908s",
+							"localizedValues": {
+								"distance": {
+									"text": "4.5 km"
+								},
+								"duration": {
+									"text": "15 mins"
+								},
+								"staticDuration": {
+									"text": "15 mins"
+								}
+							}
+						}
+					]
+				}
+			}
+		],
+		"context_json": {
+			"places": {
+				"ChIJD3uTd9hx5kcR1IQvGfr8dbk": {
+					"id": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+					"displayName": {
+						"text": "Louvre Museum"
+					},
+					"shortFormattedAddress": "Cour Carrée, Paris",
+					"location": {
+						"latitude": 48.8606111,
+						"longitude": 2.337644
+					},
+					"uuid": 1734354943827,
+					"mapService": "googleMaps",
+					"hidden": false
+				},
+				"ChIJLU7jZClu5kcR4PcOOO6p3I0": {
+					"id": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+					"displayName": {
+						"text": "Eiffel Tower"
+					},
+					"shortFormattedAddress": "Eiffel Tower, Av. Gustave Eiffel, Paris",
+					"location": {
+						"latitude": 48.858370099999995,
+						"longitude": 2.2944812999999997
+					},
+					"uuid": 1734354950551,
+					"mapService": "googleMaps",
+					"hidden": false
+				},
+				"ChIJD7OFbPJx5kcRvSE6GXkPbM4": {
+					"id": "ChIJD7OFbPJx5kcRvSE6GXkPbM4",
+					"rating": 4.3,
+					"location": {
+						"latitude": 48.854677099999996,
+						"longitude": 2.2951612000000003
+					},
+					"displayName": {
+						"text": "Café Fleur",
+						"languageCode": "fr"
+					},
+					"userRatingCount": 2766,
+					"formattedAddress": "38 Av. de Suffren, 75015 Paris, France",
+					"shortFormattedAddress": "38 Av. de Suffren, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJl_7p8uFv5kcRj5ZGEf31ILM": {
+					"id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+					"rating": 4.4,
+					"location": {
+						"latitude": 48.8583698,
+						"longitude": 2.2944833
+					},
+					"priceLevel": "PRICE_LEVEL_VERY_EXPENSIVE",
+					"displayName": {
+						"text": "Jules Verne",
+						"languageCode": "en"
+					},
+					"userRatingCount": 2842,
+					"formattedAddress": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+					"shortFormattedAddress": "Avenue Gustave Eiffel 2ème, Eiffel Tower, Av. Anatole France, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJ35cvlHJv5kcRdy-cKpnmD1E": {
+					"id": "ChIJ35cvlHJv5kcRdy-cKpnmD1E",
+					"rating": 4.5,
+					"location": {
+						"latitude": 48.8599959,
+						"longitude": 2.3005991
+					},
+					"priceLevel": "PRICE_LEVEL_MODERATE",
+					"displayName": {
+						"text": "Linette",
+						"languageCode": "en"
+					},
+					"userRatingCount": 1543,
+					"formattedAddress": "16 Av. Rapp, 75007 Paris, France",
+					"shortFormattedAddress": "16 Av. Rapp, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJqfgQWhtw5kcRI20GFmcJZlI": {
+					"id": "ChIJqfgQWhtw5kcRI20GFmcJZlI",
+					"rating": 4.6,
+					"location": {
+						"latitude": 48.851937899999996,
+						"longitude": 2.2889287
+					},
+					"priceLevel": "PRICE_LEVEL_MODERATE",
+					"displayName": {
+						"text": "L'Abreuvoir",
+						"languageCode": "fr"
+					},
+					"userRatingCount": 3451,
+					"formattedAddress": "24 Rue du Dr Finlay, 75015 Paris, France",
+					"shortFormattedAddress": "24 Rue du Dr Finlay, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				},
+				"ChIJVZDyfeBv5kcR9jN7g8cuT5g": {
+					"id": "ChIJVZDyfeBv5kcR9jN7g8cuT5g",
+					"rating": 4.5,
+					"location": {
+						"latitude": 48.8596979,
+						"longitude": 2.2992811
+					},
+					"priceLevel": "PRICE_LEVEL_MODERATE",
+					"displayName": {
+						"text": "Au bon accueil",
+						"languageCode": "fr"
+					},
+					"userRatingCount": 732,
+					"formattedAddress": "14 Rue de Monttessuy, 75007 Paris, France",
+					"shortFormattedAddress": "14 Rue de Monttessuy, Paris",
+					"uuid": 1734354972040,
+					"mapService": "googleMaps",
+					"hidden": true
+				}
+			},
+			"place_details": {},
+			"nearby_places": [
+				{
+					"locationBias": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+					"type": "restaurant",
+					"keyword": "",
+					"minRating": 0,
+					"priceLevels": [],
+					"rankPreference": "RELEVANCE",
+					"places": [
+						{
+							"id": "ChIJD7OFbPJx5kcRvSE6GXkPbM4",
+							"rating": 4.3,
+							"location": {
+								"latitude": 48.854677099999996,
+								"longitude": 2.2951612000000003
+							},
+							"displayName": {
+								"text": "Café Fleur",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 2766,
+							"formattedAddress": "38 Av. de Suffren, 75015 Paris, France",
+							"shortFormattedAddress": "38 Av. de Suffren, Paris"
+						},
+						{
+							"id": "ChIJl_7p8uFv5kcRj5ZGEf31ILM",
+							"rating": 4.4,
+							"location": {
+								"latitude": 48.8583698,
+								"longitude": 2.2944833
+							},
+							"priceLevel": "PRICE_LEVEL_VERY_EXPENSIVE",
+							"displayName": {
+								"text": "Jules Verne",
+								"languageCode": "en"
+							},
+							"userRatingCount": 2842,
+							"formattedAddress": "Avenue Gustave Eiffel 2ème, Tour Eiffel, Av. Anatole France, 75007 Paris, France",
+							"shortFormattedAddress": "Avenue Gustave Eiffel 2ème, Eiffel Tower, Av. Anatole France, Paris"
+						},
+						{
+							"id": "ChIJ35cvlHJv5kcRdy-cKpnmD1E",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8599959,
+								"longitude": 2.3005991
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Linette",
+								"languageCode": "en"
+							},
+							"userRatingCount": 1543,
+							"formattedAddress": "16 Av. Rapp, 75007 Paris, France",
+							"shortFormattedAddress": "16 Av. Rapp, Paris"
+						},
+						{
+							"id": "ChIJqfgQWhtw5kcRI20GFmcJZlI",
+							"rating": 4.6,
+							"location": {
+								"latitude": 48.851937899999996,
+								"longitude": 2.2889287
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "L'Abreuvoir",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 3451,
+							"formattedAddress": "24 Rue du Dr Finlay, 75015 Paris, France",
+							"shortFormattedAddress": "24 Rue du Dr Finlay, Paris"
+						},
+						{
+							"id": "ChIJVZDyfeBv5kcR9jN7g8cuT5g",
+							"rating": 4.5,
+							"location": {
+								"latitude": 48.8596979,
+								"longitude": 2.2992811
+							},
+							"priceLevel": "PRICE_LEVEL_MODERATE",
+							"displayName": {
+								"text": "Au bon accueil",
+								"languageCode": "fr"
+							},
+							"userRatingCount": 732,
+							"formattedAddress": "14 Rue de Monttessuy, 75007 Paris, France",
+							"shortFormattedAddress": "14 Rue de Monttessuy, Paris"
+						}
+					],
+					"routingSummaries": [
+						{
+							"legs": [
+								{
+									"duration": "440s",
+									"distanceMeters": 540
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e671f26c85b30f:0xce6c0f79193a21bd!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "0s"
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe1f2e9fe97:0xb320f5fd1146968f!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "466s",
+									"distanceMeters": 561
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66f72942f97df:0x510fe6992a9c2f77!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "980s",
+									"distanceMeters": 1185
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e6701b5a10f8a9:0x5266096716066d23!3e2"
+						},
+						{
+							"legs": [
+								{
+									"duration": "369s",
+									"distanceMeters": 440
+								}
+							],
+							"directionsUri": "https://www.google.com/maps/dir/48.8583701,2.2944813/''/data=!4m6!4m5!1m0!1m2!1m1!1s0x47e66fe07df29055:0x984f2ec7837b33f6!3e2"
+						}
+					],
+					"uuid": 1734354972040
+				}
+			],
+			"directions": [
+				{
+					"origin": "ChIJD3uTd9hx5kcR1IQvGfr8dbk",
+					"destination": "ChIJLU7jZClu5kcR4PcOOO6p3I0",
+					"intermediates": [],
+					"travelMode": "DRIVE",
+					"optimizeWaypointOrder": false,
+					"routeModifiers": {},
+					"routes": [
+						{
+							"legs": [
+								{
+									"steps": [
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "DEPART",
+												"instructions": "Head <b>east</b> on <b>Quai François Mitterrand</b> toward <b>Pont des Arts</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai du Louvre</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.3 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Pont Neuf</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Turn <b>right</b> onto <b>Quai de Conti</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "<b>Quai de Conti</b> turns slightly <b>left</b> and becomes <b>Quai Malaquais</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "TURN_RIGHT",
+												"instructions": "Keep <b>right</b> to continue on <b>Quai Malaquais</b>/<wbr/><b>Quai Voltaire</b><div style=\"font-size:0.9em\">Continue to follow Quai Voltaire</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Valéry Giscard d'Estaing</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.4 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Anatole France</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.1 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Voie Expresse Rive Gauche</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "1.2 km"
+												},
+												"staticDuration": {
+													"text": "4 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai d'Orsay</b>/<wbr/><b>Bd Saint-Germain</b><div style=\"font-size:0.9em\">Continue to follow Quai d'Orsay</div>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.6 km"
+												},
+												"staticDuration": {
+													"text": "2 mins"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "NAME_CHANGE",
+												"instructions": "Continue onto <b>Quai Jacques Chirac</b>"
+											}
+										},
+										{
+											"travelMode": "DRIVE",
+											"localizedValues": {
+												"distance": {
+													"text": "0.2 km"
+												},
+												"staticDuration": {
+													"text": "1 min"
+												}
+											},
+											"navigationInstruction": {
+												"maneuver": "RAMP_LEFT",
+												"instructions": "Take the <b>Pont d'Iéna</b> ramp on the <b>left</b> to <b>Avenue de Suffren</b><div style=\"font-size:0.9em\">Parts of this road may be closed at certain times or days</div>"
+											}
+										}
+									],
+									"polyline": {
+										"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+									},
+									"localizedValues": {
+										"distance": {
+											"text": "4.5 km"
+										},
+										"duration": {
+											"text": "15 mins"
+										},
+										"staticDuration": {
+											"text": "15 mins"
+										}
+									}
+								}
+							],
+							"polyline": {
+								"encodedPolyline": "syeiH}ogMVoF`@uF|AaOVBHCjDrCz@t@jAdAh@\\v@r@t@j@iAhBsEvJs@vFU~AALF`CBZIpAm@~Do@bEw@zDwCnM]nBe@tBiBnIuAlGwAdH{@rEcAfFEF}ChOOp@ANu@pDA`@A^@nKFdEHh@D|E?fED`Ch@vFHfEBdNRbY?hBEh@?v@HdAJzER`DZnCf@zC~@xDt@zBbA~BbA`Bj@z@xGpKP["
+							},
+							"description": "Quai d'Orsay",
+							"distanceMeters": 4494,
+							"staticDuration": "908s",
+							"localizedValues": {
+								"distance": {
+									"text": "4.5 km"
+								},
+								"duration": {
+									"text": "15 mins"
+								},
+								"staticDuration": {
+									"text": "15 mins"
+								}
+							}
+						}
+					],
+					"showSteps": true,
+					"uuid": 1734354989429
+				}
+			],
+			"route_places": []
 		}
 	}
 ]

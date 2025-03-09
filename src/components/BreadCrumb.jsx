@@ -21,6 +21,7 @@ import {
 import {
 	Assessment,
 	Category,
+	Checklist,
 	Dataset,
 	Description,
 	Home,
@@ -56,6 +57,8 @@ function getIcon(value) {
 			return <List />;
 		case "answer":
 			return <Lightbulb />;
+		case "review":
+			return <Checklist />;
 		default:
 			return <Home />;
 	}

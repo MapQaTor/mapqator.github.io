@@ -59,7 +59,7 @@ export default function PageComponent() {
 		<>
 			<Box
 				className="bg-gradient-to-r from-blue-100 to-green-100 w-full min-h-screen flex flex-col items-center justify-center p-1"
-				sx={{ overflow: "hidden" }}
+				sx={{ overflow: "hidden", position: "relative" }}
 			>
 				<Fade in={showContent} timeout={1000}>
 					<Box className="text-center">
@@ -196,6 +196,33 @@ export default function PageComponent() {
 								Start Your Adventure
 							</Button>
 						</motion.div>
+						<Typography
+							variant="body1"
+							sx={{
+								// position: "absolute",
+								color: "#666",
+								mt: 1,
+								fontWeight: "400",
+								"& a": {
+									color: "#1a73e8",
+									textDecoration: "none",
+									"&:hover": {
+										textDecoration: "underline",
+									},
+								},
+								// maxWidth: "90%",
+								textAlign: "center",
+							}}
+						>
+							Or, read our{" "}
+							<a
+								href="https://mapqator.github.io/paper/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								research paper
+							</a>{" "}
+						</Typography>
 					</Box>
 				</Fade>
 				{/* <div style={{ position: "absolute", bottom: 10 }}>

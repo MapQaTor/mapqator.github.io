@@ -142,6 +142,16 @@ const Login = () => {
 								</Button>
 							</CardContent>
 						</Card>
+						<div
+							// onClick={() => {
+							// 	// setLoading(true);
+							// 	navigate("/");
+							// }}
+							className="cursor-pointer text-gray-400"
+							style={{ transform: "translateY(20%)" }} // Move up by 20px
+						>
+							Note: Registration is not available for now.
+						</div>
 					</Box>
 				</Container>
 			</div>
