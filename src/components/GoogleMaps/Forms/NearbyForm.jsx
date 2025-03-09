@@ -120,6 +120,7 @@ export default function NearbyForm({
 				minRating: newNearbyPlaces.minRating,
 				priceLevels: newNearbyPlaces.priceLevels,
 				rankPreference: newNearbyPlaces.rankPreference,
+				maxResultCount: newNearbyPlaces.maxResultCount,
 				places: places,
 				routingSummaries: routingSummaries,
 				uuid,
