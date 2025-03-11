@@ -97,7 +97,7 @@ const PromptDesigner = ({ query, onClose }) => {
 										</select> */}
 											<Box className="flex gap-[1px] items-center rounded-2xl bg-gray-400 border-[1px] border-gray-400 w-36 cursor-pointer">
 												<Box
-													className={`bg-white  p-2 py-1 rounded-l-2xl w-1/2 text-center ${
+													className={`p-2 py-1 rounded-l-2xl w-1/2 text-center ${
 														contextType === "text"
 															? "bg-blue-200"
 															: "bg-white"
@@ -109,7 +109,7 @@ const PromptDesigner = ({ query, onClose }) => {
 													Text
 												</Box>
 												<Box
-													className={`bg-white  p-2 py-1 rounded-r-2xl w-1/2 text-center ${
+													className={`p-2 py-1 rounded-r-2xl w-1/2 text-center ${
 														contextType === "json"
 															? "bg-blue-200"
 															: "bg-white"
