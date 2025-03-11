@@ -72,10 +72,9 @@ const PromptDesigner = ({ query, onClose }) => {
 				className="w-[90%] mx-auto mt-[64px] rounded-lg"
 			>
 				<div
-					className="flex flex-col bg-gray-200  rounded-lg"
+					className="flex flex-col bg-gray-200  rounded-lg overflow-y-auto"
 					style={{
 						height: "calc(100vh - 128px)",
-						maxHeight: "calc(100vh - 128px)",
 					}}
 				>
 					<div className="p-4 text-white h-16 flex flex-row justify-between items-center">
@@ -90,9 +89,9 @@ const PromptDesigner = ({ query, onClose }) => {
 						</IconButton>
 					</div>
 
-					<div className="flex flex-row h-full bg-gray-50 rounded-b-lg">
+					<div className="flex flex-col md:flex-row h-full bg-gray-50 rounded-b-lg overflow-y-auto">
 						{/* Left Panel - Editable Inputs */}
-						<div className="w-1/3 p-2 overflow-y-auto border-r">
+						<div className="w-full md:w-1/3 p-2 overflow-y-auto border-b md:border-r">
 							<div className="bg-white p-4 rounded-md shadow-sm border border-gray-200 h-full flex flex-col">
 								<div
 									class="flex flex-col gap-2"
@@ -224,7 +223,7 @@ const PromptDesigner = ({ query, onClose }) => {
 
 						{/* Right Panel - Generated Prompt */}
 						<div
-							className="w-1/3 p-2 overflow-y-auto"
+							className="w-full md:w-1/3 p-2 overflow-y-auto border-b md:border-r"
 							style={{ height: "calc(100vh - 192px)" }}
 						>
 							<div className="bg-white p-4 rounded-md shadow-sm border border-gray-200 h-full flex flex-col">
@@ -258,7 +257,7 @@ const PromptDesigner = ({ query, onClose }) => {
 						</div>
 
 						<div
-							className="w-1/3 p-2 overflow-y-auto"
+							className="w-full md:w-1/3 p-2 overflow-y-auto "
 							style={{ height: "calc(100vh - 192px)" }}
 						>
 							<div className="bg-white p-4 rounded-md shadow-sm border border-gray-200 h-full flex flex-col gap-2">
