@@ -8,8 +8,13 @@ import {
 	ListItemText,
 	ListItemButton,
 	Tooltip,
+	IconButton,
 } from "@mui/material";
 import { GlobalContext } from "@/contexts/GlobalContext";
+import { SmartToy } from "@mui/icons-material";
+import ContextGeneratorService from "@/services/contextGeneratorService";
+import gptApi from "@/api/gptApi";
+import { showError } from "@/contexts/ToastProvider";
 
 export default function PlaceSuggestionEditor({
 	index,
@@ -20,8 +25,16 @@ export default function PlaceSuggestionEditor({
 	InputProps,
 	label,
 }) {
-	const { query, setQuery, savedPlacesMap } = useContext(GlobalContext);
-	const [isGenerating, setIsGenerating] = useState(false);
+	const {
+		query,
+		setQuery,
+		savedPlacesMap,
+		selectedPlacesMap,
+		nearbyPlacesMap,
+		directionInformation,
+		routePlacesMap,
+	} = useContext(GlobalContext);
+	
 	const { context } = useContext(GlobalContext);
 	const [showMentions, setShowMentions] = useState(false);
 	const [mentionStartIndex, setMentionStartIndex] = useState(-1);
@@ -105,6 +118,8 @@ export default function PlaceSuggestionEditor({
 		name?.toLowerCase().includes(mentionSearch.toLowerCase())
 	);
 
+
+
 	return (
 		<div style={{ position: "relative" }} className="w-full">
 			{/* <Tooltip
@@ -127,6 +142,7 @@ export default function PlaceSuggestionEditor({
 				label={label}
 				helperText='Tip: Press "@" for place suggestions'
 			/>
+		
 			{/* </Tooltip> */}
 
 			{showMentions && (

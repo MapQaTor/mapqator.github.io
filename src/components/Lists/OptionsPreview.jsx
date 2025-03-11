@@ -9,6 +9,7 @@ import {
 	Grid,
 	Card,
 	CardContent,
+	Divider,
 } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 
@@ -71,11 +72,11 @@ const ShortAnswer = ({ answer }) => (
 		<Typography variant="h6" gutterBottom>
 			Correct Answer:
 		</Typography>
-		<Card variant="outlined" className="bg-white h-full">
-			<CardContent className="h-full">
-				<h1 className="text-base">{answer.correct}</h1>
-			</CardContent>
-		</Card>
+		<Divider />
+		<h1 className="text-base py-2">{answer.correct}</h1>
+		{/* <Card variant="outlined" className="bg-white h-full">
+			<CardContent className="h-full"></CardContent>
+		</Card> */}
 	</Box>
 );
 
