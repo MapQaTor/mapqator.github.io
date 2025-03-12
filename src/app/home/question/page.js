@@ -96,11 +96,7 @@ export default function QuestionCreationPage() {
 	};
 
 	const handleReset = () => {
-		setQuery({
-			questions: [initQuery],
-			// context: prev.context,
-			// context_json: prev.context_json,
-		});
+		setQuery(initQuery);
 		setQueryStatus("empty");
 		// router.push("/home");
 	};
