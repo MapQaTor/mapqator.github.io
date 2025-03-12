@@ -19,8 +19,9 @@ const PromptDesigner = ({ query, onClose }) => {
 	const [choices, setChoices] = useState("");
 	const [prompt, setPrompt] = useState("");
 	const [copied, setCopied] = useState(false);
-	const [contextType, setContextType] = useState("json");
+	const [contextType, setContextType] = useState("text");
 	const [geminiResponse, setGeminiResponse] = useState("");
+	const [geminiThinking, setGeminiThinking] = useState(false);
 	// Generate prompt whenever inputs change
 	const generatePrompt = () => {
 		let generatedPrompt = "";
@@ -58,11 +59,12 @@ const PromptDesigner = ({ query, onClose }) => {
 
 	const askGemini = async () => {
 		// Call Gemini
-
+		setGeminiThinking(true);
 		const result = await geminiApi.askGeminiLive(prompt);
 		if (result.success) {
 			setGeminiResponse(result.data);
 		}
+		setGeminiThinking(false);
 	};
 
 	return (
@@ -280,7 +282,7 @@ const PromptDesigner = ({ query, onClose }) => {
 									<LoadingButton
 										variant="contained"
 										color="primary"
-										loading={false}
+										loading={geminiThinking}
 										onClick={askGemini}
 										className="w-full"
 										loadingPosition="start"
