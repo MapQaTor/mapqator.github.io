@@ -24,8 +24,8 @@ export default function MyQueriesPage() {
 				<QuestionsContainer
 					title="My Queries"
 					isPersonal={true}
-					onEdit={(id) => {
-						router.push("/home/review?id=" + id);
+					onEdit={(query) => {
+						router.push("/home/review?id=" + query.id);
 					}}
 				/>
 			</Box>

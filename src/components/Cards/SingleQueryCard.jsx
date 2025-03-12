@@ -113,26 +113,27 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 					}}
 					className="gap-2"
 				>
-					<Box
-						sx={{
-							display: "flex",
-							justifyContent: "space-between",
-						}}
-					>
+					{mode !== "explore" && (
 						<Box
 							sx={{
 								display: "flex",
-								justifyContent: "flex-start",
-								width: "70%",
-								alignItems: "center",
+								justifyContent: "space-between",
 							}}
-							className="gap-2"
 						>
-							<Typography sx={{ width: "3rem" }}>
-								#{entry.id}
-							</Typography>
+							<Box
+								sx={{
+									display: "flex",
+									justifyContent: "flex-start",
+									width: "70%",
+									alignItems: "center",
+								}}
+								className="gap-2"
+							>
+								<Typography sx={{ width: "3rem" }}>
+									#{entry.id}
+								</Typography>
 
-							{/* <Box className="flex gap-2">
+								{/* <Box className="flex gap-2">
 								{entry.classification
 									.split(",")
 									.map((label, index) => (
@@ -143,13 +144,15 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 										/>
 									))}
 							</Box> */}
-						</Box>
+							</Box>
 
-						{/* <h2 className="text-base font-semibold px-1 flex flex-row gap-1 items-center">
+							{/* <h2 className="text-base font-semibold px-1 flex flex-row gap-1 items-center">
 							<FontAwesomeIcon icon={faUser} />
 							{entry.username}
 						</h2> */}
-					</Box>
+						</Box>
+					)}
+
 					<div className="flex flex-row gap-4 justify-between items-start w-full">
 						<div className="flex-grow min-w-0">
 							<h6
@@ -302,46 +305,43 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 					{/* Only creator can edit his question */}
 				</div>
 			)}
-			{(entry.username === getUserName() ||
-				getUserName() === "admin") && (
-				<div className="w-full flex flex-row justify-between gap-2 p-2 items-center">
-					{getUserName() === "admin" ? (
-						<div className="flex flex-row gap-2 mr-auto">
-							<Button
-								variant="contained"
-								color="primary"
-								size="small"
-								onClick={async () => {
-									const result =
-										await queryApi.updateCategory(
-											entry.id,
-											category
-										);
-									if (result.success) {
-										setQueries((prev) =>
-											prev.map((q) =>
-												q.id === entry.id
-													? {
-															...entry,
-															classification:
-																category,
-													  }
-													: q
-											)
-										);
-										showSuccess(
-											"Category updated successfully"
-										);
-									}
-								}}
-								startIcon={<Save />}
-							>
-								Save
-							</Button>
-						</div>
-					) : (
-						<div className="flex flex-row gap-2">
-							{/* <Chip
+			<div className="w-full flex flex-row justify-between gap-2 p-2 items-center">
+				{getUserName() === "admin" ? (
+					<div className="flex flex-row gap-2 mr-auto">
+						<Button
+							variant="contained"
+							color="primary"
+							size="small"
+							onClick={async () => {
+								const result = await queryApi.updateCategory(
+									entry.id,
+									category
+								);
+								if (result.success) {
+									setQueries((prev) =>
+										prev.map((q) =>
+											q.id === entry.id
+												? {
+														...entry,
+														classification:
+															category,
+												  }
+												: q
+										)
+									);
+									showSuccess(
+										"Category updated successfully"
+									);
+								}
+							}}
+							startIcon={<Save />}
+						>
+							Save
+						</Button>
+					</div>
+				) : (
+					<div className="flex flex-row gap-2">
+						{/* <Chip
 								icon={<AssignmentTurnedIn />}
 								label={Pluralize(
 									"Question",
@@ -352,64 +352,74 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 								color="primary"
 								variant="outlined"
 							/> */}
-							<Chip
-								icon={<Api />}
-								label={Pluralize(
-									"API Call",
-									entry.api_call_logs?.length ?? 0,
-									true
-								)}
-								// size="small"
-								color="primary"
-								variant="outlined"
-							/>
-						</div>
-					)}
-
-					<div className="flex gap-2">
-						{mode === "explore" ? (
-							<>
-								<QueryEditButton
-									{...{ onEdit }}
-									query={entry}
-								/>
-							</>
-						) : (
-							<>
-								<Button
-									color="primary"
-									startIcon={<GetApp />}
-									onClick={handleDownloadQuery}
-								>
-									Download
-								</Button>
-								<Button
-									// variant="outlined"
-									color="secondary"
-									// onClick={copyContext}
-									onClick={handleOpen}
-									startIcon={<Settings />}
-									// className="mt-2"
-								>
-									Prompt
-								</Button>
-								<Button
-									// variant="contained"
-									color="error"
-									startIcon={<Delete />}
-									onClick={() => handleDelete()}
-								>
-									Delete
-								</Button>
-								<QueryEditButton
-									{...{ onEdit }}
-									query={entry}
-								/>
-							</>
-						)}
+						<Chip
+							icon={<Api />}
+							label={Pluralize(
+								"API Call",
+								entry.api_call_logs?.length ?? 0,
+								true
+							)}
+							// size="small"
+							color="primary"
+							variant="outlined"
+						/>
 					</div>
+				)}
+
+				<div className="flex gap-2">
+					{mode === "explore" ? (
+						<>
+							<Button
+								color="primary"
+								startIcon={<GetApp />}
+								onClick={handleDownloadQuery}
+							>
+								Download
+							</Button>
+							<Button
+								// variant="outlined"
+								color="secondary"
+								// onClick={copyContext}
+								onClick={handleOpen}
+								startIcon={<Settings />}
+								// className="mt-2"
+							>
+								Prompt
+							</Button>
+							<QueryEditButton {...{ onEdit }} query={entry} />
+						</>
+					) : (
+						<>
+							<Button
+								color="primary"
+								startIcon={<GetApp />}
+								onClick={handleDownloadQuery}
+							>
+								Download
+							</Button>
+							<Button
+								// variant="outlined"
+								color="secondary"
+								// onClick={copyContext}
+								onClick={handleOpen}
+								startIcon={<Settings />}
+								// className="mt-2"
+							>
+								Prompt
+							</Button>
+							<Button
+								// variant="contained"
+								color="error"
+								startIcon={<Delete />}
+								onClick={() => handleDelete()}
+							>
+								Delete
+							</Button>
+							<QueryEditButton {...{ onEdit }} query={entry} />
+						</>
+					)}
 				</div>
-			)}
+			</div>
 		</Card>
 	);
 }

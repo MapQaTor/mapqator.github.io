@@ -24,6 +24,7 @@ import {
 	Checklist,
 	Dataset,
 	Description,
+	Explore,
 	Home,
 	Info,
 	Lightbulb,
@@ -59,6 +60,8 @@ function getIcon(value) {
 			return <Lightbulb />;
 		case "review":
 			return <Checklist />;
+		case "explore":
+			return <Explore />;
 		default:
 			return <Home />;
 	}

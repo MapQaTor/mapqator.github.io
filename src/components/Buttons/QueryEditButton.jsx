@@ -100,7 +100,7 @@ export default function QueryEditButton({ onEdit, query }) {
 		// 	),
 		// });
 		// setQuery(query);
-		onEdit(query.id);
+		onEdit(query);
 	};
 
 	return (
