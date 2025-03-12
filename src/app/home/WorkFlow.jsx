@@ -57,7 +57,7 @@ export default function WorkFlow() {
 					}}
 				/>
 			),
-			label: "Create QA Pairs",
+			label: "Create QA Pair",
 			description:
 				"Create questions and answers based on designed contexts.",
 			key: "question",
