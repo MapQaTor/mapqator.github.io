@@ -1208,12 +1208,6 @@
 			],
 			"route_places": []
 		},
-		"context_gpt": null,
-		"questions": null,
-		"username": "mahirlabibdihan",
-		"created_at": "2025-03-08T17:58:42.551Z",
-		"name": null,
-		"deleted": false,
 		"api_call_logs": [
 			{
 				"url": "https://places.googleapis.com/v1/places:searchText",
@@ -2479,8 +2473,7 @@
 			"options": [],
 			"correct": "Louvre Museum -> Notre-Dame Cathedral of Paris -> Palais Garnier -> Eiffel Tower"
 		},
-		"classification": "trip",
-		"evaluation": []
+		"classification": "trip"
 	},
 	{
 		"context": "Information of Louvre Museum:\n\tLocation: 48.8606111, 2.337644\n\tShortFormattedAddress: Cour Carrée, Paris\n\tAccessibilityOptions: Wheelchair Accessible Entrance, Wheelchair Accessible Parking, Wheelchair Accessible Restroom\n\tBusinessStatus: Operational\n\tGoogleMapsUri: https://maps.google.com/?cid=13363865620386383060\n\tPrimaryType: Museum\n\tInternationalPhoneNumber: +33 1 40 20 53 17\n\tNationalPhoneNumber: 01 40 20 53 17\n\tPriceLevel: Unspecified\n\tRating: 4.7 ratings\n\tRegularOpeningHours: Monday: 9:00 AM – 6:00 PM, Tuesday: Closed, Wednesday: 9:00 AM – 9:00 PM, Thursday: 9:00 AM – 6:00 PM, Friday: 9:00 AM – 9:00 PM, Saturday: 9:00 AM – 6:00 PM, Sunday: 9:00 AM – 6:00 PM\n\tUserRatingCount: 320481\n\tWebsiteUri: https://www.louvre.fr/\n\tAllowsDogs: Does not allow Dogs\n\tCurbsidePickup: No Curbside Pickup\n\tDelivery: No Delivery\n\tDineIn: Dine In Not Available\n\tEditorialSummary: N/A\n\tEvChargeOptions: N/A\n\tFuelOptions: N/A\n\tGoodForChildren: Good for Children\n\tGoodForGroups: Not good for Groups\n\tGoodForWatchingSports: Not good for Watching Sports\n\tLiveMusic: No Live Music\n\tMenuForChildren: No Menu for Children\n\tParkingOptions: N/A\n\tPaymentOptions: N/A\n\tOutdoorSeating: No Outdoor Seating\n\tReservable: Not Reservable\n\tRestroom: Restroom available\n\tServesBeer: Does not serve Beer\n\tServesBreakfast: Does not serve Breakfast\n\tServesBrunch: Does not serve Brunch\n\tServesCocktails: Does not serve Cocktails\n\tServesCoffee: Does not serve Coffee\n\tServesDessert: Does not serve Dessert\n\tServesDinner: Does not serve Dinner\n\tServesLunch: Does not serve Lunch\n\tServesVegetarianFood: Does not serve Vegetarian Food\n\tServesWine: Does not serve Wine\n\tTakeout: No Takeout\n\nInformation of Eiffel Tower:\n\tLocation: 48.858370099999995, 2.2944812999999997\n\tShortFormattedAddress: Eiffel Tower, Av. Gustave Eiffel, Paris\n\tAccessibilityOptions: Wheelchair Accessible Entrance, Wheelchair Accessible Parking, Wheelchair Accessible Restroom\n\tBusinessStatus: Operational\n\tGoogleMapsUri: https://maps.google.com/?cid=10222232094831998944\n\tPrimaryType: Historical Landmark\n\tInternationalPhoneNumber: N/A\n\tNationalPhoneNumber: N/A\n\tPriceLevel: Unspecified\n\tRating: 4.7 ratings\n\tRegularOpeningHours: Monday: 9:00 AM – 12:00 AM, Tuesday: 9:00 AM – 12:00 AM, Wednesday: 9:00 AM – 12:00 AM, Thursday: 9:00 AM – 12:00 AM, Friday: 9:00 AM – 12:00 AM, Saturday: 9:00 AM – 12:00 AM, Sunday: 9:00 AM – 12:00 AM\n\tUserRatingCount: 403045\n\tWebsiteUri: https://www.toureiffel.paris/fr\n\tAllowsDogs: Does not allow Dogs\n\tCurbsidePickup: No Curbside Pickup\n\tDelivery: No Delivery\n\tDineIn: Dine In Not Available\n\tEditorialSummary: N/A\n\tEvChargeOptions: N/A\n\tFuelOptions: N/A\n\tGoodForChildren: Good for Children\n\tGoodForGroups: Not good for Groups\n\tGoodForWatchingSports: Not good for Watching Sports\n\tLiveMusic: No Live Music\n\tMenuForChildren: No Menu for Children\n\tParkingOptions: N/A\n\tPaymentOptions: N/A\n\tOutdoorSeating: No Outdoor Seating\n\tReservable: Not Reservable\n\tRestroom: No Restroom\n\tServesBeer: Does not serve Beer\n\tServesBreakfast: Does not serve Breakfast\n\tServesBrunch: Does not serve Brunch\n\tServesCocktails: Does not serve Cocktails\n\tServesCoffee: Does not serve Coffee\n\tServesDessert: Does not serve Dessert\n\tServesDinner: Does not serve Dinner\n\tServesLunch: Does not serve Lunch\n\tServesVegetarianFood: Does not serve Vegetarian Food\n\tServesWine: Does not serve Wine\n\tTakeout: No Takeout\n\nNearby Restaurants of Eiffel Tower (48.8584, 2.2945) are:\n\t1. Café Fleur (48.8547, 2.2952) | Rating: 4.3* (2766)  |🚶🏾‍➡️440s (540m)\n\t2. Jules Verne (48.8584, 2.2945) | Rating: 4.4* (2842) | Very Expensive |🚶🏾‍➡️0s\n\t3. Linette (48.8600, 2.3006) | Rating: 4.5* (1543) | Moderate |🚶🏾‍➡️466s (561m)\n\t4. L'Abreuvoir (48.8519, 2.2889) | Rating: 4.6* (3451) | Moderate |🚶🏾‍➡️980s (1185m)\n\t5. Au bon accueil (48.8597, 2.2993) | Rating: 4.5* (732) | Moderate |🚶🏾‍➡️369s (440m)\n\nThere are 1 routes from <b>Louvre Museum to <b>Eiffel Tower by car. They are:\n\t1. Via Quai d'Orsay | 15 mins (4.5 km)\n\t - Head <b>east</b> on <b>Quai François Mitterrand</b> toward <b>Pont des Arts</b>\n\t - Continue onto <b>Quai du Louvre</b>\n\t - Turn <b>right</b> onto <b>Pont Neuf</b>\n\t - Turn <b>right</b> onto <b>Quai de Conti</b>\n\t - <b>Quai de Conti</b> turns slightly <b>left</b> and becomes <b>Quai Malaquais</b>\n\t - Keep <b>right</b> to continue on <b>Quai Malaquais</b>/<wbr/><b>Quai Voltaire</b><div style=\"font-size:0.9em\">Continue to follow Quai Voltaire</div>\n\t - Continue onto <b>Quai Valéry Giscard d'Estaing</b>\n\t - Continue onto <b>Quai Anatole France</b>\n\t - Continue onto <b>Voie Expresse Rive Gauche</b>\n\t - Continue onto <b>Quai d'Orsay</b>/<wbr/><b>Bd Saint-Germain</b><div style=\"font-size:0.9em\">Continue to follow Quai d'Orsay</div>\n\t - Continue onto <b>Quai Jacques Chirac</b>\n\t - Take the <b>Pont d'Iéna</b> ramp on the <b>left</b> to <b>Avenue de Suffren</b><div style=\"font-size:0.9em\">Parts of this road may be closed at certain times or days</div>\n\nRestaurants along the Driving route from Louvre Museum (48.8606, 2.3376) to Eiffel Tower (48.8584, 2.2945) are: \n\t1. Jules Verne (48.8584, 2.2945) | Rating: 4.4* (2769) | Very Expensive \n\t2. Le Bouchon (48.8550, 2.2944) | Rating: 4.1* (3101) | Moderate \n\t3. Mon Square Restaurant (48.8590, 2.3202) | Rating: 4.2* (526)  \n\t4. Café de l'Empire (48.8582, 2.3285) | Rating: 4.5* (1880) | Inexpensive \n\t5. Le Voltaire (48.8591, 2.3303) | Rating: 4.2* (367) | Very Expensive \n",
@@ -3521,40 +3514,6 @@
 				}
 			]
 		},
-		"context_gpt": null,
-		"questions": [
-			{
-				"title": "Fastest time to go from Louvre Museum to Eiffel Tower by car?",
-				"answer": {
-					"type": "single-choice",
-					"options": ["14 mins", "15 mins", "16 mins", "17 mins"],
-					"correct": 1
-				},
-				"classification": "routing",
-				"references": [],
-				"relevant_api_calls": [1734354989429]
-			},
-			{
-				"title": "Nearby restaurant of Eiffel Tower with over 2000 user ratings and at least 4.5* rating",
-				"answer": {
-					"type": "single-choice",
-					"options": [
-						"Café Fleur",
-						"Jules Verne",
-						"Linette",
-						"L'Abreuvoir"
-					],
-					"correct": 3
-				},
-				"classification": "nearby",
-				"references": [],
-				"relevant_api_calls": [1734354972040]
-			}
-		],
-		"username": "mahirlabibdihan",
-		"created_at": "2024-12-16T13:20:08.705Z",
-		"name": "Louvre + Eiffel",
-		"deleted": false,
 		"api_call_logs": [
 			{
 				"url": "https://places.googleapis.com/v1/places:searchText",
@@ -4306,7 +4265,6 @@
 			"options": ["14 mins", "15 mins", "16 mins", "17 mins"],
 			"correct": 1
 		},
-		"classification": "routing",
-		"evaluation": []
+		"classification": "routing"
 	}
 ]
