@@ -19,7 +19,7 @@ export default function PageComponent() {
 			? process.env.REACT_APP_BASE_URL
 			: process.env.NODE_ENV === "development"
 			? ""
-			: "https://mahirlabibdihan.github.io/mapquest"
+			: "https://mapqator.github.io"
 	);
 	const [showContent, setShowContent] = useState(false);
 	const router = useRouter();
@@ -84,7 +84,6 @@ export default function PageComponent() {
 									variant="h3"
 									component="div"
 									sx={{
-										// ml: 2,
 										color: "#333",
 										fontWeight: "bold",
 										fontSize: "5rem",
@@ -105,28 +104,12 @@ export default function PageComponent() {
 										transform: "translateY(-10px)",
 									}}
 									className="h-3 font-mono"
-									// style={{}}
 								>
 									A Tool for NLP and Geo-Spatial Researchers
 								</Typography>
 							</div>
 						</motion.div>
-
-						{/* <Typography
-							variant="h2"
-							component="h1"
-							gutterBottom
-							sx={{
-								fontWeight: "bold",
-								color: "#333",
-								mb: 5,
-								textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-							}}
-						>
-							MapQuest
-						</Typography> */}
 					</Box>
-
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -154,12 +137,37 @@ export default function PageComponent() {
 									md: "1.2rem",
 								},
 								color: "#666",
-								mb: 6,
+								mb: 3,
 								fontWeight: "300",
 							}}
 						>
 							Create, Manage, and Evaluate Geo-Spatial QnA from
 							Map Services
+						</Typography>
+						<Typography
+							variant="body1"
+							sx={{
+								color: "#666",
+								mb: 6,
+								fontWeight: "400",
+								"& a": {
+									color: "#1a73e8",
+									textDecoration: "none",
+									"&:hover": {
+										textDecoration: "underline",
+									},
+								},
+							}}
+						>
+							Read our{" "}
+							<a
+								href="https://mapqator.github.io/paper/"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								research paper
+							</a>{" "}
+							to learn more about the methodology and findings
 						</Typography>
 					</motion.div>
 					<motion.div
@@ -175,20 +183,15 @@ export default function PageComponent() {
 								py: 1,
 								borderRadius: 50,
 								boxShadow: "0 4px 10px rgba(0, 0, 0, 0.15)",
-								backgroundColor: "#34A853", // Google Green
+								backgroundColor: "#34A853",
 								color: "white",
 								fontSize: "1.1rem",
 								"&:hover": {
-									backgroundColor: "#2E8B57", // Darker shade of green
+									backgroundColor: "#2E8B57",
 								},
 							}}
 							onClick={() =>
-								router.push(
-									// isAuthenticated
-									// 	?
-									config.loginRedirect + "#onboard"
-									// : config.logoutRedirect
-								)
+								router.push(config.loginRedirect + "#onboard")
 							}
 						>
 							Start Your Adventure
@@ -196,23 +199,6 @@ export default function PageComponent() {
 					</motion.div>
 				</Box>
 			</Fade>
-			{/* <div style={{ position: "absolute", bottom: 10 }}>
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ delay: 0.5, duration: 0.8 }}
-				>
-					<Typography
-						variant="body2"
-						sx={{
-							color: "#888",
-							fontWeight: "light",
-						}}
-					>
-						Developed by Mahir Labib Dihan
-					</Typography>
-				</motion.div>
-			</div> */}
 		</Box>
 	);
 }

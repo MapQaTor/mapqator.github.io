@@ -510,13 +510,13 @@ export default function AppContextProvider({ children }) {
 			},
 		},
 	];
-	const [savedPlacesMap, setSavedPlacesMap] = useState({});
+
 	const [queries, setQueries] = useState([]);
 
 	const fetchQueries = async () => {
 		// setLoading(true);
 		try {
-			const res = await queryApi.getQueries();
+			const res = await queryApi.getNewQueries();
 			if (res.success) {
 				console.log("Data: ", res.data);
 				setQueries(res.data);
@@ -556,9 +556,7 @@ export default function AppContextProvider({ children }) {
 	}, []);
 
 	return (
-		<AppContext.Provider
-			value={{ savedPlacesMap, setSavedPlacesMap, queries, setQueries }}
-		>
+		<AppContext.Provider value={{ queries, setQueries }}>
 			{children}
 		</AppContext.Provider>
 	);
