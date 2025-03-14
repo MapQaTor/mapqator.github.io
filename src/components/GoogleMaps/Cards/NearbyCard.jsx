@@ -205,6 +205,7 @@ function NearbyCardSummary({
 					sx={{
 						transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
 						transition: "0.3s",
+						height: "fit-content",
 					}}
 				>
 					<ExpandMore />

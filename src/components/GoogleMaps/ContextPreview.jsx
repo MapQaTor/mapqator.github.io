@@ -79,7 +79,6 @@ export default function ContextPreview({
 						directionInformation,
 						savedPlacesMap,
 					}}
-					mode="edit"
 				/>
 			),
 		},

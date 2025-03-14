@@ -309,9 +309,9 @@ export default function GlobalContextProvider({ children }) {
 	const initQuery = {
 		question: "",
 		answer: {
-			type: "single-choice",
-			options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-			correct: -1,
+			type: "open-ended",
+			// options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+			correct: "",
 		},
 		classification: "",
 	};

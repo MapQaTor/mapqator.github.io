@@ -3,7 +3,7 @@ import { Box, Typography, Button, IconButton } from "@mui/material";
 import Image from "next/image";
 import { AppBar, Toolbar } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { Login, Logout } from "@mui/icons-material";
+import { Explore, Login, Logout } from "@mui/icons-material";
 import config from "@/config/config";
 import AuthService from "@/services/authService";
 import { useAuth } from "@/contexts/AuthContext";
