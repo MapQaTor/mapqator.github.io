@@ -216,7 +216,7 @@ export default function PageComponent() {
 						>
 							Or, read our{" "}
 							<a
-								href="https://mapqator.github.io/paper/"
+								href="https://mapqator.github.io/project/"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
