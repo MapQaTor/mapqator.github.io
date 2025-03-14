@@ -79,7 +79,7 @@ const Login = () => {
 							style={{ transform: "translateY(-120%)" }} // Move up by 20px
 						>
 							<Box
-								onClick={() => router.push("landing")}
+								onClick={() => router.push("/")}
 								className="cursor-pointer flex-row items-end flex w-full gap-2"
 							>
 								<div className="flex">
