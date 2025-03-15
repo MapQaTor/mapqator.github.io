@@ -242,28 +242,28 @@ export default function Summary() {
 		}
 	};
 
-	useEffect(() => {
-		// Update "context" in the query object
-		const contextText = ContextGeneratorService.convertContextToText(
-			savedPlacesMap,
-			selectedPlacesMap,
-			nearbyPlacesMap,
-			directionInformation,
-			routePlacesMap
-		);
+	// useEffect(() => {
+	// 	// Update "context" in the query object
+	// 	const contextText = ContextGeneratorService.convertContextToText(
+	// 		savedPlacesMap,
+	// 		selectedPlacesMap,
+	// 		nearbyPlacesMap,
+	// 		directionInformation,
+	// 		routePlacesMap
+	// 	);
 
-		setQuery((prev) => ({
-			...prev,
-			context: contextText,
-			context_json: {
-				places: savedPlacesMap,
-				place_details: selectedPlacesMap,
-				nearby_places: nearbyPlacesMap,
-				directions: directionInformation,
-				route_places: routePlacesMap,
-			},
-		}));
-	}, []);
+	// 	setQuery((prev) => ({
+	// 		...prev,
+	// 		context: contextText,
+	// 		context_json: {
+	// 			places: savedPlacesMap,
+	// 			place_details: selectedPlacesMap,
+	// 			nearby_places: nearbyPlacesMap,
+	// 			directions: directionInformation,
+	// 			route_places: routePlacesMap,
+	// 		},
+	// 	}));
+	// }, []);
 
 	const {
 		initRoutePlacesMap,
