@@ -6,12 +6,14 @@ const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
 	const [isAuthenticated, setIsAuthenticated] = useState(null);
 	const handleStorageChange = () => {
-		const token = localStorage.getItem("token");
 		if (isTokenValid()) {
 			setIsAuthenticated(true);
 		} else {
-			console.log("Removing token");
-			if (token) localStorage.removeItem("token");
+			const token = localStorage.getItem("token");
+			if (token) {
+				console.log("Removing token");
+				localStorage.removeItem("token");
+			}
 			setIsAuthenticated(false);
 		}
 	};

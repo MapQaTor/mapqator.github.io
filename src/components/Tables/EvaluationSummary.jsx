@@ -15,9 +15,15 @@ export default function EvaluationSummary() {
 	const { queries } = useContext(AppContext);
 	useEffect(() => {
 		const tmp = {};
+		const human = {
+			correct: 0,
+			invalid: 0,
+			accuracy: 0,
+			wrong: 0,
+		};
 		let valid_questions = 0;
 		queries.forEach((query) => {
-			if (query.context !== "" && query.answer.correct !== -1) {
+			if (query.context !== "") {
 				valid_questions++;
 
 				query.evaluation?.forEach((e) => {

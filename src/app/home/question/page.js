@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
 	Box,
 	Typography,
@@ -7,6 +7,7 @@ import {
 	Paper,
 	Divider,
 	Container,
+	IconButton,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { GlobalContext } from "@/contexts/GlobalContext";
@@ -19,8 +20,17 @@ import QuestionsContainer from "@/components/Containers/QuestionsContainer";
 import ContextGeneratorService from "@/services/contextGeneratorService";
 import { useAuth } from "@/contexts/AuthContext";
 import { AppContext } from "@/contexts/AppContext";
-import { useRouter } from "next/navigation";
-import QuestionAnswerForm from "@/components/Forms/QuestionAnswerForm";
+import { useRouter, useSearchParams } from "next/navigation";
+import QuestionAnswerForm from "@/components/Forms/SingleQuestionAnswerForm";
+import {
+	ArrowBack,
+	ArrowForward,
+	Assessment,
+	Clear,
+	ExpandMore,
+} from "@mui/icons-material";
+import ContextPreview from "@/components/GoogleMaps/ContextPreview";
+import StepIndicator from "@/components/StepIndicator";
 
 export default function QuestionCreationPage() {
 	const {
@@ -37,11 +47,14 @@ export default function QuestionCreationPage() {
 		contextStatus,
 		queryStatus,
 		setQueryStatus,
+		routePlacesMap,
+		savedPlacesMap,
 	} = useContext(GlobalContext);
 
 	const router = useRouter();
-	const { queries, setQueries, savedPlacesMap } = useContext(AppContext);
+	const { queries, setQueries } = useContext(AppContext);
 	const { isAuthenticated } = useAuth();
+	const searchParams = useSearchParams();
 
 	// useEffect(() => {
 	// 	if (contextStatus === "empty") {
@@ -49,8 +62,32 @@ export default function QuestionCreationPage() {
 	// 	}
 	// }, [contextStatus]);
 
+	const handleNext = () => {
+		const params = searchParams.toString();
+		setQueryStatus("saved");
+		if (params) {
+			router.push(`/home/review?${params}`);
+		} else {
+			router.push("/home/review");
+		}
+	};
+
+	const handlePrevious = () => {
+		const params = searchParams.toString();
+		if (params) {
+			router.push(`/home/context?${params}`);
+		} else {
+			router.push("/home/context");
+		}
+	};
+
 	const handleContextEdit = () => {
-		router.push("/home/context");
+		const params = searchParams.toString();
+		if (params) {
+			router.push(`/home/context?${params}`);
+		} else {
+			router.push("/home/context");
+		}
 	};
 
 	const onFinish = () => {
@@ -59,96 +96,16 @@ export default function QuestionCreationPage() {
 	};
 
 	const handleReset = () => {
-		setQuery((prev) => ({
-			...initQuery,
-			context: prev.context,
-			context_json: prev.context_json,
-		}));
+		setQuery(initQuery);
+		setQueryStatus("empty");
+		// router.push("/home");
 	};
 
+	const [contextExpanded, setContextExpanded] = useState(false);
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		setQueryStatus("saved");
 		onFinish();
-		return;
-
-		const newQuery = {
-			...query,
-			context: ContextGeneratorService.convertContextToText(context),
-			context_json: {
-				saved_places: savedPlacesMap,
-				distance_matrix: distanceMatrix,
-				places: selectedPlacesMap,
-				nearby_places: nearbyPlacesMap,
-				current_information: currentInformation,
-				pois: poisMap,
-				directions: directionInformation,
-			},
-		};
-		console.log(newQuery);
-		if (isAuthenticated) {
-			if (query.id === undefined) {
-				const res = await queryApi.createQuery(newQuery);
-				if (res.success) {
-					// update the queries
-					showSuccess("Query saved successfully");
-					console.log("Saved query: ", res.data[0]);
-					const newQueries = [...queries];
-					newQueries.unshift(res.data[0]);
-					setQueries(newQueries);
-					window.scrollTo(document.getElementById("questions"));
-					// handleReset();
-					onFinish();
-				} else {
-					showError("Can't save this query");
-					window.scrollTo(0, 0);
-				}
-			} else {
-				const res = await queryApi.updateQuery(query.id, newQuery);
-				if (res.success) {
-					setQueries((prev) =>
-						prev.map((q) =>
-							q.id === res.data[0].id ? res.data[0] : q
-						)
-					);
-					// update the queries
-					showSuccess("Query edited successfully");
-					// handleReset();
-					onFinish();
-				} else {
-					showError("Can't update this query");
-					window.scrollTo(0, 0);
-				}
-			}
-		} else {
-			if (query.id === undefined) {
-				const new_id =
-					"G-" +
-					queries.filter((item) => item.username === getUserName())
-						.length;
-				const newQueries = [...queries];
-				newQueries.unshift({
-					...newQuery,
-					id: new_id,
-					username: getUserName(),
-					human: {
-						answer: "",
-						explanation: "",
-						username: "",
-					},
-				});
-				setQueries(newQueries);
-				window.scrollTo(document.getElementById("questions"));
-				showSuccess("Query saved successfully");
-			} else {
-				setQueries((prev) =>
-					prev.map((q) => (q.id === query.id ? newQuery : q))
-				);
-				showSuccess("Query edited successfully");
-			}
-			// handleReset();
-			onFinish();
-		}
 	};
 
 	return (
@@ -157,11 +114,11 @@ export default function QuestionCreationPage() {
 			// sx={{ mt: 4, mb: 4 }}
 			className="min-h-screen"
 		>
-			<Box sx={{ mt: 4, mb: 4 }}>
-				<h1 className="text-3xl md:text-4xl font-normal pb-5">
-					Create MCQ Questions based on the Context
+			<Box sx={{ my: 4 }} className="flex flex-col gap-6">
+				<h1 className="text-3xl md:text-4xl font-normal pb-2">
+					Create QA Pair based on the Context
 				</h1>
-				<Paper elevation={2} sx={{ p: 3, mb: 4 }}>
+				<Paper elevation={2} sx={{ p: 3 }}>
 					<Box
 						sx={{
 							display: "flex",
@@ -179,55 +136,141 @@ export default function QuestionCreationPage() {
 					</Box>
 					<Divider sx={{ my: 2 }} />
 					<Box>
-						<CollapsedContext
+						{/* <CollapsedContext
 							context={ContextGeneratorService.convertContextToText(
 								context
 							)}
-						/>
-						{/* <React.Fragment>
-						<p
-							className="w-full text-left"
-							dangerouslySetInnerHTML={{
-								__html: expanded
-									? text
-									: text.substring(0, 200) + " ...",
-							}}
-							style={{
-								whiteSpace: "pre-line",
-							}}
-						/>
-					</React.Fragment>
-					{text === "" && (
-						<p className="text-center my-auto text-lg md:text-xl text-zinc-400">
-							No context provided.
-						</p>
-					)}
-					{text.length > 200 && (
-						<Button
-							onClick={() => setExpanded((prev) => !prev)}
-							sx={{ mt: 1, textTransform: "none" }}
-						>
-							{expanded ? "Show Less" : "Read More"}
-						</Button>
-					)} */}
+						/> */}
+
+						{Object.keys(savedPlacesMap).length > 0 ? (
+							<Paper
+								elevation={1}
+								sx={{ p: 2, bgcolor: "grey.100" }}
+							>
+								<div
+									className="flex justify-center flex-row items-center cursor-pointer"
+									onClick={() =>
+										setContextExpanded((prev) => !prev)
+									}
+								>
+									<h1 className="font-bold p-2">
+										{contextExpanded
+											? "Summarize Context"
+											: "Visualize Context"}
+									</h1>
+									<IconButton
+										// sx={{ height: "2rem", width: "2rem" }}
+
+										sx={{
+											transform: contextExpanded
+												? "rotate(180deg)"
+												: "rotate(0deg)",
+											transition: "0.3s",
+										}}
+									>
+										<ExpandMore />
+									</IconButton>
+								</div>
+
+								{contextExpanded ? (
+									<>
+										<Divider
+											sx={{
+												mt: 2,
+											}}
+										/>
+										<ContextPreview
+											savedPlacesMap={savedPlacesMap}
+											selectedPlacesMap={
+												selectedPlacesMap
+											}
+											nearbyPlacesMap={nearbyPlacesMap}
+											directionInformation={
+												directionInformation
+											}
+											routePlacesMap={routePlacesMap}
+										/>
+									</>
+								) : (
+									<>
+										<Divider
+											sx={{
+												mt: 2,
+											}}
+										/>
+										<Box className="mt-2">
+											{ContextGeneratorService.summarizeContext(
+												savedPlacesMap,
+												selectedPlacesMap,
+												nearbyPlacesMap,
+												directionInformation,
+												routePlacesMap
+											).map((r, index) => (
+												<Typography key={index}>
+													({index + 1}) {r.label}
+												</Typography>
+											))}
+										</Box>
+									</>
+								)}
+							</Paper>
+						) : (
+							<p className="text-center py-2 my-auto text-base md:text-lg text-zinc-400">
+								No information added.
+							</p>
+						)}
 					</Box>
 				</Paper>
 
-				{/* <Paper elevation={2} sx={{ p: 3, mb: 4 }}>
-				<Typography variant="h6">AI Generated Questions</Typography>
-				<Divider sx={{ my: 2 }} />
-				<ul className="list-disc pl-4">
-					<li>Dummy Question 1</li>
-					<li>Dummy Question 2</li>
-					<li>Dummy Question 3</li>
-					<li>Dummy Question 4</li>
-				</ul>
-			</Paper> */}
 				<QuestionAnswerForm
 					handleSubmit={handleSubmit}
 					handleReset={handleReset}
 				/>
 
+				<Divider className="w-full mb-4" />
+				<Box className="flex flex-row gap-4 w-full justify-between items-end">
+					<div className="w-1/3">
+						<Button
+							onClick={handlePrevious}
+							startIcon={<ArrowBack />}
+							color="primary"
+							variant="contained"
+						>
+							Prev
+						</Button>
+					</div>
+
+					<div className="flex flex-col items-center w-1/3">
+						<StepIndicator currentStep={2} totalSteps={3} />
+						<span className="text-sm text-gray-500 mt-1">
+							Step 2 of 3
+						</span>
+					</div>
+
+					<div className="flex flex-row gap-4 w-1/3 justify-end">
+						<Button
+							onClick={() => {
+								handleReset();
+							}}
+							startIcon={<Clear />}
+							color="error"
+						>
+							Clear
+						</Button>
+						<Button
+							variant="contained"
+							color="primary"
+							endIcon={<ArrowForward />}
+							// loading={loading}
+							loadingPosition="start"
+							onClick={handleNext}
+						>
+							{query.id === undefined
+								? "Next"
+								: "Next #" + query.id}
+						</Button>
+					</div>
+				</Box>
 				{/* {queries.filter((item) => item.username === getUserName()).length >
 				0 && (
 				<>
@@ -241,6 +284,35 @@ export default function QuestionCreationPage() {
 					</div>
 				</>
 			)} */}
+				{/* {queryStatus === "saved" && (
+					<Box
+						// mt={3}
+						// p={2}
+						// bgcolor="background.paper"
+						borderRadius={1}
+						className="mt-4 p-4 bg-blue-50 rounded-lg w-full"
+					>
+						<Typography variant="h6" gutterBottom>
+							Would you like to evaluate this query with LLMs?
+						</Typography>
+						<Box display="flex" className="gap-2" mt={1}>
+							<Button
+								onClick={onFinish}
+								variant="contained"
+								color="primary"
+								startIcon={<Assessment />}
+							>
+								Evaluate
+							</Button>
+							<Button
+								onClick={() => handleReset()}
+								variant="outlined"
+							>
+								No, thanks
+							</Button>
+						</Box>
+					</Box>
+				)} */}
 			</Box>
 		</Container>
 	);
