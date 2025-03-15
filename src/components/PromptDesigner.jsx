@@ -285,7 +285,7 @@ const PromptDesigner = ({ query, onClose }) => {
 										loading={geminiThinking}
 										onClick={askGemini}
 										className="w-full"
-										loadingPosition="start"
+										// loadingPosition="start"
 										startIcon={<SmartToy />}
 									>
 										Ask Gemini
