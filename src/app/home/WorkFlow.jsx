@@ -171,13 +171,13 @@ export default function WorkFlow() {
 									router.push(step.to);
 									setShowTooltip(false);
 								}}
-								// disabled={
-								// 	(step.key === "question" &&
-								// 		contextStatus !== "saved") ||
-								// 	(step.key === "live_evaluation" &&
-								// 		(queryStatus !== "saved" ||
-								// 			contextStatus !== "saved"))
-								// }
+								disabled={
+									(step.key === "question" &&
+										contextStatus !== "saved") ||
+									(step.key === "live_evaluation" &&
+										(queryStatus !== "saved" ||
+											contextStatus !== "saved"))
+								}
 								color={
 									(step.key === "context" &&
 										contextStatus === "saved") ||
