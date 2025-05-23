@@ -11,18 +11,28 @@ import { GitHub, LinkedIn, Mail } from "@mui/icons-material";
 import Footer from "./footer";
 import GlobalContextProvider from "@/contexts/GlobalContext";
 export const metadata = {
-	metadataBase: new URL("https://mahirlabibdihan.github.io/mapquest"),
+	metadataBase: new URL("https://mapqator.github.io/"),
 	title: {
 		template: "%s | MapQaTor",
 		default: "MapQaTor",
 	},
-
-	description: "Map dataset creator",
+	verification: {
+		google: "9pM5JfTm1_c-Tmup10c-YeYhrLtBVv_tnZJ_mbvxGWQ",
+	},
+	description: "A System for Efficient Annotation of Map Query Datasets",
 	// openGraph: {
 	// 	title: "Title webtsite",
 	// 	description: "this is the desciption",
 	// 	image: "url/image.png",
 	// },
+	keywords: [
+		"mapqator",
+		"mapeval",
+		"mahir labib dihan",
+		"mapqa",
+		"mapqa dataset",
+		"google maps dataset",
+	],
 };
 
 export default function RootLayout({ children }) {

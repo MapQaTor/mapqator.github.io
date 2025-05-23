@@ -22,21 +22,21 @@ const PrimaryLayout = ({ children }) => {
 	const router = useRouter();
 	return (
 		<Box sx={{ display: "flex" }}>
-			{isAuthenticated && (
-				<Box
-					sx={{
-						width: {
-							xs: "0px",
-							md: `calc(${config.drawerWidth}px)`,
-						},
-					}}
-				>
-					<div className="md:hidden">
-						<Toolbar />
-					</div>{" "}
-					<LeftSidebar />
-				</Box>
-			)}
+			{/* {isAuthenticated && ( */}
+			<Box
+				sx={{
+					width: {
+						xs: "0px",
+						md: `calc(${config.drawerWidth}px)`,
+					},
+				}}
+			>
+				<div className="md:hidden">
+					<Toolbar />
+				</div>{" "}
+				<LeftSidebar />
+			</Box>
+			{/* )} */}
 
 			<div className="w-full relative">
 				<Box

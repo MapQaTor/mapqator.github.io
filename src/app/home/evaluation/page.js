@@ -35,6 +35,9 @@ import { showError, showSuccess } from "@/contexts/ToastProvider";
 import EditIcon from "@mui/icons-material/Edit";
 import Confirmation from "@/components/Dialogs/Confirmation";
 import geminiApi from "@/api/geminiApi";
+import { getUserName } from "@/api/base";
+import { Save } from "@mui/icons-material";
+import evaluationApi from "@/api/evaluationApi";
 
 const llmApis = {
 	gpt4: {
@@ -42,15 +45,16 @@ const llmApis = {
 		name: "GPT-4",
 		func: gptApi.askGPTLive,
 	},
-	geminiPro: {
-		id: 7,
-		name: "Gemini 1.0 Pro",
-		func: geminiApi.askGeminiLive,
-	},
+	// geminiPro: {
+	// 	id: 7,
+	// 	name: "Gemini 1.0 Pro",
+	// 	func: geminiApi.askGeminiLive,
+	// },
 };
 
 const n_stages = Object.keys(llmApis).length + 2;
 export default function LiveEvaluation() {
+	// return;
 	const {
 		query,
 		initQuery,
@@ -69,14 +73,24 @@ export default function LiveEvaluation() {
 	const [isProcessing, setIsProcessing] = useState(false);
 	const [showLoginPrompt, setShowLoginPrompt] = useState(false);
 	const { isAuthenticated } = useAuth();
-	const { setEvaluationStatus, queryStatus } = useContext(GlobalContext);
-	const { queries, setQueries, savedPlacesMap } = useContext(AppContext);
+	const { setEvaluationStatus, queryStatus, savedPlacesMap } =
+		useContext(GlobalContext);
+	const { queries, setQueries } = useContext(AppContext);
 
 	// useEffect(() => {
 	// 	if (queryStatus === "empty") {
 	// 		router.push("/home");
 	// 	}
 	// }, [queryStatus]);
+
+	const extractJSON = (s) => {
+		const match = s.match(/{.*?}/);
+		try {
+			return JSON.parse(match[1]);
+		} catch (e) {
+			return null;
+		}
+	};
 
 	const extract = (s) => {
 		for (let char of s) {
@@ -96,18 +110,40 @@ export default function LiveEvaluation() {
 		console.log("Hit Evaluate");
 		const res = await llmFunction(
 			ContextGeneratorService.convertContextToText(context),
-			query
+			{
+				questions: query.questions,
+			}
 		);
-		if (res.success) {
-			const option = extract(res.data);
-			const explanation = extractSubstringInParentheses(res.data);
-			const verdict =
-				parseInt(option) - 1 === query.answer.correct
-					? "right"
-					: "wrong";
+		if (res.success && res.data.length > 0) {
+			console.log("LLM response", res.data);
+			const answers = [];
+			for (let i = 0; i < res.data.length; i++) {
+				const option = extract(res.data[i]);
+				const explanation = extractSubstringInParentheses(res.data[i]);
+				const verdict =
+					parseInt(option) - 1 === query.questions[i].answer.correct
+						? "right"
+						: "wrong";
+
+				console.log("LLM JSON", {
+					answer: res.data[i],
+					option,
+					explanation,
+					verdict,
+				});
+				answers.push({
+					answer: res.data[i],
+					option,
+					explanation,
+					verdict,
+				});
+			}
+
+			console.log("answers", answers);
+
 			setLlmResults((prev) => ({
 				...prev,
-				[llm]: { answer: res.data, option, explanation, verdict },
+				[llm]: answers,
 			}));
 		}
 	};
@@ -144,7 +180,7 @@ export default function LiveEvaluation() {
 
 	const handleReset = () => {
 		setQuery((prev) => ({
-			...initQuery,
+			questions: [initQuery],
 			context: prev.context,
 			context_json: prev.context_json,
 		}));
@@ -157,52 +193,42 @@ export default function LiveEvaluation() {
 			...query,
 			context: ContextGeneratorService.convertContextToText(context),
 			context_json: {
-				saved_places: savedPlacesMap,
-				distance_matrix: distanceMatrix,
-				places: selectedPlacesMap,
+				places: savedPlacesMap,
+				// distance_matrix: distanceMatrix,
+				place_details: selectedPlacesMap,
 				nearby_places: nearbyPlacesMap,
-				current_information: currentInformation,
-				pois: poisMap,
+				// current_information: currentInformation,
+				// pois: poisMap,
 				directions: directionInformation,
 			},
 			evaluation: Object.entries(llmResults).map(([llm, result]) => ({
 				model_id: llmApis[llm].id,
+				model: llmApis[llm].name,
 				answer: result.answer,
 				verdict: result.verdict,
 			})),
 		};
 
-		if (query.id === undefined) {
-			const res = await queryApi.createQueryWithEvaluation(newQuery);
-			if (res.success) {
-				// update the queries
-				showSuccess("Query saved successfully");
-				const newQueries = [...queries];
-				newQueries.unshift(res.data[0]);
-				setQueries(newQueries);
-				router.push("/home/my-dataset");
-				handleReset();
-			} else {
-				showError("Can't save this query");
-				// window.scrollTo(0, 0);
-			}
+		const res = await evaluationApi.insertNewResult(
+			Object.entries(llmResults).map(([llm, result]) => ({
+				model_id: llmApis[llm].id,
+				query_id: query.id,
+				responses: result,
+				type: 0,
+			}))
+		);
+
+		if (res.success) {
+			// setQueries((prev) =>
+			// 	prev.map((q) => (q.id === query.id ? res.data[0] : q))
+			// );
+			// update the queries
+			showSuccess("Query edited successfully");
+			router.push("/home/my-dataset");
+			handleReset();
 		} else {
-			const res = await queryApi.updateQueryWithEvaluation(
-				query.id,
-				newQuery
-			);
-			if (res.success) {
-				setQueries((prev) =>
-					prev.map((q) => (q.id === res.data[0].id ? res.data[0] : q))
-				);
-				// update the queries
-				showSuccess("Query edited successfully");
-				router.push("/home/my-dataset");
-				handleReset();
-			} else {
-				showError("Can't update this query");
-				// window.scrollTo(0, 0);
-			}
+			showError("Can't update this query");
+			// window.scrollTo(0, 0);
 		}
 	};
 
@@ -227,7 +253,7 @@ export default function LiveEvaluation() {
 					onConfirm={() => {
 						handleDiscard();
 					}}
-					text="Your query and evaluation will be lost. Are you sure you want to discard?"
+					text="Your evaluation will be lost. Are you sure you want to discard?"
 				/>
 				<LinearProgress
 					variant="determinate"
@@ -276,201 +302,200 @@ export default function LiveEvaluation() {
 						</CardContent>
 					</Card>
 
-					<motion.div
-						animate={{
-							y: stage >= 1 ? 0 : 50,
-							opacity: stage >= 1 ? 1 : 0,
-						}}
-						transition={{ duration: 0.5 }}
-					>
-						<Card elevation={3} className="mb-4 w-full bg-green-50">
-							<CardContent>
-								<Box
-									display="flex"
-									justifyContent="space-between"
-									alignItems="center"
-									mb={2}
-								>
-									<Box display="flex" alignItems="center">
-										<Avatar
-											className="mr-2"
-											sx={{ backgroundColor: "#22c55e" }}
-										>
-											<QuestionMarkIcon />
-										</Avatar>
-										<Typography variant="h6">
-											Question
-										</Typography>
-									</Box>
-									<Button
-										variant="outlined"
-										color="primary"
-										startIcon={<EditIcon />}
-										onClick={handleEditQuestion}
-									>
-										Edit
-									</Button>
-								</Box>
-								<Typography
-									variant="body1"
-									gutterBottom
-									className="font-bold"
-								>
-									{query.question}
-								</Typography>
-								<Grid container spacing={2} className="mt-2">
-									{query.answer.options.map(
-										(option, index) => (
-											<Grid
-												item
-												xs={12}
-												sm={6}
-												key={index}
-											>
-												<Card
-													variant="outlined"
-													className="bg-white"
-												>
-													<CardContent>
-														<Typography variant="body2">
-															Option {index + 1}:{" "}
-															{option}
-															{index ===
-																query.answer
-																	.correct && (
-																<CheckCircleIcon
-																	className="text-green-500 ml-2"
-																	fontSize="small"
-																/>
-															)}
-														</Typography>
-													</CardContent>
-												</Card>
-											</Grid>
-										)
-									)}
-								</Grid>
-							</CardContent>
-						</Card>
-					</motion.div>
-
-					<AnimatePresence>
-						{isProcessing && (
+					{query.questions?.map((question, index) => (
+						<>
 							<motion.div
-								initial={{ scale: 0 }}
-								animate={{ scale: 1 }}
-								exit={{ scale: 0 }}
+								animate={{
+									y: stage >= 1 ? 0 : 50,
+									opacity: stage >= 1 ? 1 : 0,
+								}}
 								transition={{ duration: 0.5 }}
-								className="flex justify-center mb-4"
 							>
-								<CircularProgress />
-							</motion.div>
-						)}
-					</AnimatePresence>
-
-					{/* {stage >= 3 && (
-					<motion.div
-						initial={{ x: -50, opacity: 0 }}
-						animate={{ x: 0, opacity: 1 }}
-						transition={{ duration: 0.5 }}
-					>
-						<Card elevation={3} className="mb-4 bg-purple-50">
-							<CardContent>
-								<Box display="flex" alignItems="center" mb={2}>
-									<Avatar
-										className="bg-purple-500 mr-2"
-										sx={{ backgroundColor: "#a855f7" }}
-									>
-										<CheckCircleIcon />
-									</Avatar>
-									<Typography variant="h6">
-										Ground Truth
-									</Typography>
-								</Box>
-								<Typography
-									variant="body1"
-									className="font-bold"
-									gutterBottom
+								<Card
+									elevation={3}
+									className="mb-4 w-full bg-green-50"
 								>
-									Option {query.answer.correct + 1}:{" "}
-									{query.answer.options[query.answer.correct]}
-								</Typography>
-								<Chip
-									label="Correct Answer"
-									color="secondary"
-									size="small"
-									className="mt-2"
-								/>
-							</CardContent>
-						</Card>
-					</motion.div>
-				)} */}
-
-					{Object.entries(llmResults).map(([llm, result], index) => (
-						<motion.div
-							key={llm}
-							initial={{ x: -50, opacity: 0 }}
-							animate={{ x: 0, opacity: 1 }}
-							transition={{ duration: 0.5, delay: index * 0.2 }}
-						>
-							<Card elevation={3} className="mb-4 bg-yellow-500">
-								<CardContent>
-									<Box
-										display="flex"
-										alignItems="center"
-										mb={2}
-									>
-										<Avatar
-											className="bg-yellow-500 mr-2"
-											sx={{ backgroundColor: "#eab308" }}
+									<CardContent>
+										<Box
+											display="flex"
+											justifyContent="space-between"
+											alignItems="center"
+											mb={2}
 										>
-											<SmartToyIcon />
-										</Avatar>
-										<Typography variant="h6">
-											{llmApis[llm].name} Answer
+											<Box
+												display="flex"
+												alignItems="center"
+											>
+												<Avatar
+													className="mr-2"
+													sx={{
+														backgroundColor:
+															"#22c55e",
+													}}
+												>
+													<QuestionMarkIcon />
+												</Avatar>
+												<Typography variant="h6">
+													Question
+												</Typography>
+											</Box>
+											<Button
+												variant="outlined"
+												color="primary"
+												startIcon={<EditIcon />}
+												onClick={handleEditQuestion}
+											>
+												Edit
+											</Button>
+										</Box>
+										<Typography
+											variant="body1"
+											gutterBottom
+											className="font-bold"
+										>
+											{question.title}
 										</Typography>
-									</Box>
-									<Typography
-										variant="body1"
-										className="font-bold"
-										gutterBottom
+										<Grid
+											container
+											spacing={2}
+											className="mt-2"
+										>
+											{question.answer.options.map(
+												(option, index) => (
+													<Grid
+														item
+														xs={12}
+														sm={6}
+														key={index}
+													>
+														<Card
+															variant="outlined"
+															className="bg-white"
+														>
+															<CardContent>
+																<Typography variant="body2">
+																	Option{" "}
+																	{index + 1}:{" "}
+																	{option}
+																	{index ===
+																		question
+																			.answer
+																			.correct && (
+																		<CheckCircleIcon
+																			className="text-green-500 ml-2"
+																			fontSize="small"
+																		/>
+																	)}
+																</Typography>
+															</CardContent>
+														</Card>
+													</Grid>
+												)
+											)}
+										</Grid>
+									</CardContent>
+								</Card>
+							</motion.div>
+							<AnimatePresence>
+								{isProcessing && (
+									<motion.div
+										initial={{ scale: 0 }}
+										animate={{ scale: 1 }}
+										exit={{ scale: 0 }}
+										transition={{ duration: 0.5 }}
+										className="flex justify-center mb-4"
 									>
-										{result.option === "0"
-											? "No answer"
-											: "Option " +
-											  result.option +
-											  ": " +
-											  query.answer.options[
-													result.option - 1
-											  ]}
-									</Typography>
-									<Box
-										display="flex"
-										alignItems="center"
-										mt={1}
+										<CircularProgress />
+									</motion.div>
+								)}
+							</AnimatePresence>
+							{Object.entries(llmResults).map(
+								([llm, result], index) => (
+									<motion.div
+										key={llm}
+										initial={{ x: -50, opacity: 0 }}
+										animate={{ x: 0, opacity: 1 }}
+										transition={{
+											duration: 0.5,
+											delay: index * 0.2,
+										}}
 									>
-										{result.verdict === "right" ? (
-											<CheckCircleIcon className="text-green-500 mr-2" />
-										) : (
-											<CancelIcon className="text-red-500 mr-2" />
-										)}
-										<Chip
-											label={
-												result.verdict === "right"
-													? "Correct"
-													: "Incorrect"
-											}
-											color={
-												result.verdict === "right"
-													? "success"
-													: "error"
-											}
-											size="small"
-										/>
-									</Box>
-								</CardContent>
-							</Card>
-						</motion.div>
+										<Card
+											elevation={3}
+											className="mb-4 bg-yellow-500"
+										>
+											<CardContent>
+												<Box
+													display="flex"
+													alignItems="center"
+													mb={2}
+												>
+													<Avatar
+														className="bg-yellow-500 mr-2"
+														sx={{
+															backgroundColor:
+																"#eab308",
+														}}
+													>
+														<SmartToyIcon />
+													</Avatar>
+													<Typography variant="h6">
+														{llmApis[llm].name}{" "}
+														Answer
+													</Typography>
+												</Box>
+												<Typography
+													variant="body1"
+													className="font-bold"
+													gutterBottom
+												>
+													{result[index].option ===
+													"0"
+														? "No answer"
+														: "Option " +
+														  result[index].option +
+														  ": " +
+														  query.questions[index]
+																.answer.options[
+																result[index]
+																	.option - 1
+														  ]}
+												</Typography>
+												<Box
+													display="flex"
+													alignItems="center"
+													mt={1}
+												>
+													{result[index].verdict ===
+													"right" ? (
+														<CheckCircleIcon className="text-green-500 mr-2" />
+													) : (
+														<CancelIcon className="text-red-500 mr-2" />
+													)}
+													<Chip
+														label={
+															result[index]
+																.verdict ===
+															"right"
+																? "Correct"
+																: "Incorrect"
+														}
+														color={
+															result[index]
+																.verdict ===
+															"right"
+																? "success"
+																: "error"
+														}
+														size="small"
+													/>
+												</Box>
+											</CardContent>
+										</Card>
+									</motion.div>
+								)
+							)}
+						</>
 					))}
 
 					{showLoginPrompt && (
@@ -480,10 +505,37 @@ export default function LiveEvaluation() {
 							transition={{ duration: 0.5 }}
 						>
 							{isAuthenticated ? (
-								<SaveQuery
-									onSave={handleSave}
-									onDiscard={setOpen}
-								/>
+								<Box
+									// mt={3}
+									// p={2}
+									// bgcolor="background.paper"
+									borderRadius={1}
+									className="mt-4 p-4 bg-blue-50 rounded-lg w-full"
+								>
+									<Typography variant="h6" gutterBottom>
+										Would you like to save this evaluation?
+									</Typography>
+									<Box
+										display="flex"
+										className="gap-2"
+										mt={1}
+									>
+										<Button
+											onClick={handleSave}
+											variant="contained"
+											color="primary"
+											startIcon={<Save />}
+										>
+											Save
+										</Button>
+										<Button
+											onClick={() => setOpen(true)}
+											variant="outlined"
+										>
+											No, thanks
+										</Button>
+									</Box>
+								</Box>
 							) : (
 								<LoginPrompt onLogin={handleLogin} />
 							)}

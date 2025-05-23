@@ -97,7 +97,7 @@ export default function LeftSidebar({ window }) {
 		setIsClosing(true);
 		setMobileOpen(false);
 	};
-
+	const { isAuthenticated } = useAuth();
 	const handleDrawerTransitionEnd = () => {
 		setIsClosing(false);
 	};
@@ -119,7 +119,7 @@ export default function LeftSidebar({ window }) {
 			<Toolbar className="!px-4">
 				<div
 					className="text-3xl font-bold flex flex-row justify-center items-center w-full gap-2 cursor-pointer"
-					onClick={() => router.push("/landing")}
+					onClick={() => router.push("/")}
 				>
 					<div className="hidden lg:flex">
 						<Image
@@ -147,23 +147,37 @@ export default function LeftSidebar({ window }) {
 						icon: <AssessmentIcon />,
 				}, */}
 			<List>
-				{[
-					{
-						name: "Home",
-						icon: <Home />,
-						to: "/home",
-					},
-					{
-						name: "My Dataset",
-						icon: <DatasetIcon />,
-						to: "/home/my-dataset",
-					},
-					{
-						name: "Explore",
-						icon: <Explore />,
-						to: "/home/explore",
-					},
-				].map(({ name, icon, to }) => (
+				{(isAuthenticated
+					? [
+							{
+								name: "Home",
+								icon: <Home />,
+								to: "/home",
+							},
+							{
+								name: "My Dataset",
+								icon: <DatasetIcon />,
+								to: "/home/my-dataset",
+							},
+							{
+								name: "Explore",
+								icon: <Explore />,
+								to: "/home/explore",
+							},
+					  ]
+					: [
+							{
+								name: "Home",
+								icon: <Home />,
+								to: "/home",
+							},
+							{
+								name: "Explore",
+								icon: <Explore />,
+								to: "/home/explore",
+							},
+					  ]
+				).map(({ name, icon, to }) => (
 					<NavButton icon={icon} name={name} to={to} key={to} />
 				))}
 			</List>

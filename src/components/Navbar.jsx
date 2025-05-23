@@ -3,7 +3,7 @@ import { Box, Typography, Button, IconButton } from "@mui/material";
 import Image from "next/image";
 import { AppBar, Toolbar } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { Login, Logout } from "@mui/icons-material";
+import { Explore, Login, Logout } from "@mui/icons-material";
 import config from "@/config/config";
 import AuthService from "@/services/authService";
 import { useAuth } from "@/contexts/AuthContext";
@@ -17,7 +17,7 @@ export default function Navbar({ selected, setSelected }) {
 			? process.env.REACT_APP_BASE_URL
 			: process.env.NODE_ENV === "development"
 			? ""
-			: "https://mahirlabibdihan.github.io/mapquest"
+			: "https://mapqator.github.io"
 	);
 	const navItems = [
 		{ name: "Context", key: "context", icon: <MapIcon /> },

@@ -79,7 +79,7 @@ const Login = () => {
 							style={{ transform: "translateY(-120%)" }} // Move up by 20px
 						>
 							<Box
-								onClick={() => router.push("landing")}
+								onClick={() => router.push("/")}
 								className="cursor-pointer flex-row items-end flex w-full gap-2"
 							>
 								<div className="flex">
@@ -142,6 +142,16 @@ const Login = () => {
 								</Button>
 							</CardContent>
 						</Card>
+						<div
+							// onClick={() => {
+							// 	// setLoading(true);
+							// 	navigate("/");
+							// }}
+							className="cursor-pointer text-gray-400"
+							style={{ transform: "translateY(20%)" }} // Move up by 20px
+						>
+							Note: Registration is not available for now.
+						</div>
 					</Box>
 				</Container>
 			</div>
