@@ -111,19 +111,6 @@ export default function QuestionsContainer({ title, isPersonal, onEdit }) {
 					</Button>
 				</Box>
 			</div>
-			{/* <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-				Download the JSON file to evaluate the dataset using Open Source
-				LLMs. Run the source code at{" "}
-				<a
-					href="https://github.com/mahirlabibdihan/mapquest-evaluation"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="underline text-black hover:text-blue-500"
-				>
-					https://github.com/mahirlabibdihan/mapquest-evaluation
-				</a>{" "}
-				on your own machine.
-			</Typography> */}
 			<div className="flex flex-col gap-5">
 				{data.map((entry, index) => (
 					<QueryCard

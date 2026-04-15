@@ -19,7 +19,7 @@ export default function PageComponent() {
 			? process.env.REACT_APP_BASE_URL
 			: process.env.NODE_ENV === "development"
 			? ""
-			: "https://mahirlabibdihan.github.io/mapquest"
+			: "https://mapqator.github.io"
 	);
 	const [showContent, setShowContent] = useState(false);
 	const router = useRouter();
