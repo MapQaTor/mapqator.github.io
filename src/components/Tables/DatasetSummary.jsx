@@ -28,7 +28,7 @@ export default function DatasetSummary() {
 			if (query.answer.correct !== -1) {
 				questions_with_answer++;
 			}
-			if (query.context !== "" && query.answer.correct !== -1) {
+			if (query.context !== "") {
 				const invalid = query.evaluation?.find(
 					(e) =>
 						e.model !== "mistralai/Mixtral-8x7B-Instruct-v0.1" &&

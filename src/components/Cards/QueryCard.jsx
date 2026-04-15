@@ -10,15 +10,9 @@ import {
 	Button,
 	IconButton,
 	Card,
+	Divider,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faChevronDown,
-	faChevronUp,
-	faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import Annotation from "@/components/Forms/Annotation";
 import LLMAnswers from "../Tables/LLMAnswers";
 import QueryEditButton from "@/components/Buttons/QueryEditButton";
 import CollapsedContext from "./CollapsedContext";
@@ -26,24 +20,30 @@ import OptionsPreview from "../Lists/OptionsPreview";
 import { getUserName } from "@/api/base";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import queryApi from "@/api/queryApi";
-import { Delete, Save, GetApp } from "@mui/icons-material";
+import {
+	Delete,
+	Save,
+	GetApp,
+	Rule,
+	AssignmentTurnedIn,
+	Api,
+} from "@mui/icons-material";
 import { useAuth } from "@/contexts/AuthContext";
 import { showError, showSuccess } from "@/contexts/ToastProvider";
-import { FormControl, Select, MenuItem, InputLabel } from "@mui/material";
-import categories from "@/database/categories.json";
-import { convertFromSnake } from "@/services/utils";
 import { AppContext } from "@/contexts/AppContext";
-
-export default function QueryCard({ entry, onEdit, isPersonal, mode }) {
+import ContextGeneratorService from "@/services/contextGeneratorService";
+import Pluralize from "pluralize";
+import ContextPreview from "../GoogleMaps/ContextPreview";
+export default function QueryCard({ entry, onEdit, isPersonal, mode, index }) {
 	const [flag, setFlag] = useState(false);
 	const { setQueries } = useContext(AppContext);
 	const { isAuthenticated } = useAuth();
-	const [expanded, setExpanded] = useState(false);
-	const [category, setCategory] = useState(entry.classification);
+	const [expanded, setExpanded] = useState(index === 0);
+	const [contextExpanded, setContextExpanded] = useState(false);
 
 	const handleDelete = async () => {
 		if (isAuthenticated) {
-			const res = await queryApi.deleteQuery(entry.id);
+			const res = await queryApi.deleteNewQuery(entry.id);
 			if (res.success) {
 				setQueries((prev) => prev.filter((q) => q.id !== entry.id));
 				showSuccess("Query deleted successfully");
@@ -55,19 +55,6 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode }) {
 			showSuccess("Query deleted successfully");
 		}
 	};
-
-	useEffect(() => {
-		const invalid = entry.evaluation?.find(
-			(e) =>
-				e.model !== "mistralai/Mixtral-8x7B-Instruct-v0.1" &&
-				e.verdict === "invalid"
-		);
-		if (invalid) {
-			setFlag(true);
-		} else {
-			setFlag(entry.human.answer === 0);
-		}
-	}, [entry]);
 
 	const toggleAccordion = () => setExpanded(!expanded);
 
@@ -117,7 +104,7 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode }) {
 								#{entry.id}
 							</Typography>
 
-							<Box className="flex gap-2">
+							{/* <Box className="flex gap-2">
 								{entry.classification
 									.split(",")
 									.map((label, index) => (
@@ -127,7 +114,7 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode }) {
 											color="primary"
 										/>
 									))}
-							</Box>
+							</Box> */}
 						</Box>
 
 						{/* <h2 className="text-base font-semibold px-1 flex flex-row gap-1 items-center">
@@ -144,7 +131,7 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode }) {
 										: "truncate"
 								}`}
 							>
-								{entry.question}
+								{entry.name}
 							</h6>
 						</div>
 						{flag && (
@@ -174,120 +161,263 @@ export default function QueryCard({ entry, onEdit, isPersonal, mode }) {
 			</div>
 			{expanded && (
 				<div className="p-4 bg-white">
+					{/* {context && (
+						<Box sx={{ mb: 2 }}>
+							<Typography variant="h6" gutterBottom>
+								Context:
+							</Typography>
+							<Paper
+								elevation={1}
+								sx={{ p: 2, bgcolor: "grey.100" }}
+							>
+								<CollapsedContext context={context} />
+							</Paper>
+						</Box>
+					)} */}
 					<Box sx={{ mb: 2 }}>
-						<Typography variant="h6" gutterBottom>
-							Context:
-						</Typography>
 						<Paper elevation={1} sx={{ p: 2, bgcolor: "grey.100" }}>
-							<CollapsedContext context={entry.context} />
-						</Paper>
-					</Box>
-					<OptionsPreview answer={entry.answer} />
-					<LLMAnswers evaluation={entry.evaluation} />
-					{!isPersonal && mode !== "explore" && (
-						<Annotation query={entry} />
-					)}
+							<div
+								className="flex justify-center flex-row items-center cursor-pointer"
+								onClick={() =>
+									setContextExpanded((prev) => !prev)
+								}
+							>
+								<h1 className="font-bold p-2">
+									{contextExpanded
+										? "Summarize Context"
+										: "Visualize Context"}
+								</h1>
+								<IconButton
+									// sx={{ height: "2rem", width: "2rem" }}
 
-					{/* Only creator can edit his question */}
-					{(entry.username === getUserName() ||
-						getUserName() === "admin") && (
-						<div className="w-full flex flex-row justify-end gap-2 mt-2">
-							{getUserName() === "admin" && (
-								<div className="flex flex-row gap-2 mr-auto">
-									<FormControl
-										variant="outlined"
-										className="w-[20rem]"
-										size="small"
-										required
-									>
-										<InputLabel>Category</InputLabel>
-										<Select
-											required
-											label={"Category"}
-											placeholder="Choose a category of the question"
-											id="outlined-adornment"
-											className="outlined-input"
-											value={category}
-											onChange={(e) => {
-												setCategory(e.target.value);
-											}}
-										>
-											{categories.map((value, index) => (
-												<MenuItem
-													key={index}
-													value={value}
-												>
-													{convertFromSnake(value)}
-												</MenuItem>
-											))}
-										</Select>
-									</FormControl>
-									<Button
-										variant="contained"
-										color="primary"
-										size="small"
-										onClick={async () => {
-											const result =
-												await queryApi.updateCategory(
-													entry.id,
-													category
-												);
-											if (result.success) {
-												setQueries((prev) =>
-													prev.map((q) =>
-														q.id === entry.id
-															? {
-																	...entry,
-																	classification:
-																		category,
-															  }
-															: q
-													)
-												);
-												showSuccess(
-													"Category updated successfully"
-												);
-											}
-										}}
-										startIcon={<Save />}
-									>
-										Save
-									</Button>
-								</div>
-							)}
+									sx={{
+										transform: contextExpanded
+											? "rotate(180deg)"
+											: "rotate(0deg)",
+										transition: "0.3s",
+									}}
+								>
+									<ExpandMoreIcon />
+								</IconButton>
+							</div>
 
-							{mode === "explore" ? (
+							{contextExpanded ? (
 								<>
-									<QueryEditButton
-										{...{ onEdit }}
-										query={entry}
+									<Divider
+										sx={{
+											mt: 2,
+										}}
+									/>
+									<ContextPreview
+										savedPlacesMap={
+											entry.context_json.places
+										}
+										selectedPlacesMap={
+											entry.context_json.place_details
+										}
+										nearbyPlacesMap={
+											entry.context_json.nearby_places
+										}
+										// distanceMatrix={
+										// 	entry.context_json.distance_matrix
+										// }
+										directionInformation={
+											entry.context_json.directions
+										}
+										routePlacesMap={
+											entry.context_json.route_places
+										}
 									/>
 								</>
 							) : (
 								<>
-									<Button
-										color="primary"
-										startIcon={<GetApp />}
-										onClick={handleDownloadQuery}
-									>
-										Download Query
-									</Button>
-									<Button
-										// variant="contained"
-										color="error"
-										startIcon={<Delete />}
-										onClick={() => handleDelete()}
-									>
-										Delete
-									</Button>
-									<QueryEditButton
-										{...{ onEdit }}
-										query={entry}
+									<Divider
+										sx={{
+											mt: 2,
+										}}
 									/>
+									<Box className="mt-2">
+										{ContextGeneratorService.summarizeContext(
+											entry.context_json.places,
+											entry.context_json.place_details,
+											entry.context_json.nearby_places,
+											entry.context_json.directions,
+											entry.context_json.route_places
+										).map((r, index) => (
+											<Typography key={index}>
+												({index + 1}) {r.label}
+											</Typography>
+										))}
+									</Box>
 								</>
 							)}
+						</Paper>
+					</Box>
+
+					<div className="flex flex-col gap-4">
+						{entry.questions.map((question, i) => (
+							<div key={i}>
+								<Typography variant="h6" gutterBottom>
+									Question {i + 1}:
+								</Typography>
+								<Paper
+									elevation={1}
+									sx={{ p: 2, bgcolor: "grey.100" }}
+								>
+									<Box sx={{ mb: 2 }}>
+										<h6
+											className={`${"whitespace-pre-line"}`}
+										>
+											{question.title}
+										</h6>
+									</Box>
+									<OptionsPreview answer={question.answer} />
+									<LLMAnswers entry={entry} index={i} />
+								</Paper>
+							</div>
+						))}
+					</div>
+
+					{/* <OptionsPreview answer={entry.answer} /> */}
+
+					{/* {!isPersonal && mode !== "explore" && (
+						<Annotation query={entry} />
+					)} */}
+
+					{/* Only creator can edit his question */}
+				</div>
+			)}
+			{(entry.username === getUserName() ||
+				getUserName() === "admin") && (
+				<div className="w-full flex flex-row justify-between gap-2 p-2 items-center">
+					{getUserName() === "admin" ? (
+						<div className="flex flex-row gap-2 mr-auto">
+							<Button
+								variant="contained"
+								color="primary"
+								size="small"
+								onClick={async () => {
+									const result =
+										await queryApi.updateCategory(
+											entry.id,
+											category
+										);
+									if (result.success) {
+										setQueries((prev) =>
+											prev.map((q) =>
+												q.id === entry.id
+													? {
+															...entry,
+															classification:
+																category,
+													  }
+													: q
+											)
+										);
+										showSuccess(
+											"Category updated successfully"
+										);
+									}
+								}}
+								startIcon={<Save />}
+							>
+								Save
+							</Button>
+						</div>
+					) : (
+						<div className="flex flex-row gap-2">
+							<Chip
+								icon={<AssignmentTurnedIn />}
+								label={Pluralize(
+									"Question",
+									entry.questions.length ?? 0,
+									true
+								)}
+								// size="small"
+								color="primary"
+								variant="outlined"
+							/>
+							<Chip
+								icon={<Api />}
+								label={Pluralize(
+									"API Call",
+									entry.api_call_logs?.length ?? 0,
+									true
+								)}
+								// size="small"
+								color="primary"
+								variant="outlined"
+							/>
 						</div>
 					)}
+
+					<div className="flex gap-2">
+						{mode === "explore" ? (
+							<>
+								<QueryEditButton
+									{...{ onEdit }}
+									query={entry}
+								/>
+							</>
+						) : (
+							<>
+								<Button
+									color="primary"
+									startIcon={<GetApp />}
+									onClick={handleDownloadQuery}
+								>
+									Download
+								</Button>
+								{/* <Button
+									color="primary"
+									startIcon={<Rule />}
+									onClick={async () => {
+										const res =
+											await queryApi.submitForEvaluation(
+												entry.id,
+												context
+											);
+										if (res.success) {
+											showSuccess(
+												"Query submitted for evaluation"
+											);
+											console.log(res.data[0]);
+											// Update the query with the evaluation
+											setQueries((prev) =>
+												prev.map((q) =>
+													q.id === entry.id
+														? {
+																...entry,
+																evaluation:
+																	res.data[0],
+														  }
+														: q
+												)
+											);
+										} else {
+											showError(
+												"Can't submit query for evaluation"
+											);
+										}
+									}}
+								>
+									Evaluate
+								</Button> */}
+								<Button
+									// variant="contained"
+									color="error"
+									startIcon={<Delete />}
+									onClick={() => handleDelete()}
+								>
+									Delete
+								</Button>
+								<QueryEditButton
+									{...{ onEdit }}
+									query={entry}
+								/>
+							</>
+						)}
+					</div>
 				</div>
 			)}
 		</Card>

@@ -11,9 +11,10 @@ import {
 } from "@mui/material";
 import { getUserName } from "@/api/base";
 import categories from "@/database/categories.json";
-import QueryCard from "@/components/Cards/QueryCard";
+import QueryCard from "@/components/Cards/SingleQueryCard";
 import { AppContext } from "@/contexts/AppContext";
 import { convertFromSnake } from "@/services/utils";
+import { Download } from "@mui/icons-material";
 
 const itemsPerPage = 10;
 
@@ -81,7 +82,7 @@ export default function QuestionsContainer({ title, isPersonal, onEdit }) {
 					{title}
 				</h1>
 				<Box sx={{ mb: 3, ml: "auto", display: "flex", gap: 2 }}>
-					<FormControl sx={{ minWidth: 200 }} size="small">
+					{/* <FormControl sx={{ minWidth: 200 }} size="small">
 						<InputLabel id="category-select-label">
 							Filter by Category
 						</InputLabel>
@@ -100,32 +101,24 @@ export default function QuestionsContainer({ title, isPersonal, onEdit }) {
 								</MenuItem>
 							))}
 						</Select>
-					</FormControl>
-					<Button variant="contained" onClick={handleDownload}>
-						Download JSON
+					</FormControl> */}
+					<Button
+						variant="contained"
+						onClick={handleDownload}
+						startIcon={<Download />}
+					>
+						Download Dataset
 					</Button>
 				</Box>
 			</div>
-			<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-				Download the JSON file to evaluate the dataset using Open Source
-				LLMs. Run the source code at{" "}
-				<a
-					href="https://github.com/mahirlabibdihan/mapquest-evaluation"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="underline text-black hover:text-blue-500"
-				>
-					https://github.com/mahirlabibdihan/mapquest-evaluation
-				</a>{" "}
-				on your own machine.
-			</Typography>
 			<div className="flex flex-col gap-5">
-				{data.map((entry) => (
+				{data.map((entry, index) => (
 					<QueryCard
 						key={entry.id}
 						entry={entry}
 						onEdit={onEdit}
 						isPersonal={isPersonal}
+						index={index}
 					/>
 				))}
 			</div>
